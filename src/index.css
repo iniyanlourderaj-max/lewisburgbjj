@@ -31,6 +31,14 @@
   }
 }
 
+@font-face {
+  font-family: 'Bad Brush Custom';
+  src: url('./assets/fonts/Bad Brush.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer utilities {
   /* START of Typography */
   .h-num {

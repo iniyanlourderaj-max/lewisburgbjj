@@ -61,16 +61,35 @@ const Coaches = () => {
     <section id="coaches" className="bg-[#222222] text-white py-24 px-4 md:px-12 border-t border-zinc-800/60 overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         
-        {/* 🎨 CHANGED: Turned header container into a column flex block and centered all text alignment elements */}
-        <div className="flex flex-col items-center justify-center text-center mb-12 space-y-3">
-          <span className="text-xs uppercase tracking-[0.3em] text-zinc-500 font-medium block">
-            YOUR JOURNEY STARTS HERE
+        {/* HEADER BLOCK */}
+        <div className="flex flex-col items-center justify-center text-center mb-14 space-y-4">
+          
+          {/* 🥋 UPPER TAGLINE
+              - Changed phone screens from text-5xl down to text-xl
+              - Changed desktop screens up to text-3xl for optimal balance
+          */}
+          <span 
+            className="text-xl md:text-2xl uppercase font-medium text-white block"
+            style={{ 
+              fontFamily: "'Oswald', sans-serif",
+              letterSpacing: "0.06em"
+            }}
+          >
+            Your Journey Starts Here
           </span>
-          <h2 className="text-3xl md:text-5xl font-light tracking-wider uppercase text-white">
-            MEET THE <span className="font-semibold text-zinc-100">TEAM</span>
+
+          {/* 🎨 MAIN HEADER */}
+          <h2 
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white uppercase select-none pt-1"
+            style={{ 
+              fontFamily: "'Bad Brush Custom', sans-serif",
+              textShadow: "rgba(0, 0, 0, 0.5) 0px 0px 20px"
+            }}
+          >
+            Meet The <span className="text-[#E9E151]">Team.</span>
           </h2>
           
-          {/* 🎨 NAVIGATION HANDLES: Placed cleanly underneath the centered titles instead of floating right */}
+          {/* NAVIGATION HANDLES */}
           <div className="flex items-center space-x-3 pt-4">
             <button
               onClick={() => scroll("left")}
@@ -116,26 +135,33 @@ const Coaches = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80 pointer-events-none" />
 
                 {/* Static Layout Meta Tag Details always anchoring bottom left */}
-                {/* 🎨 CHANGED: Centered the text and styling indicators inside the cards as well */}
                 <div className="absolute bottom-6 left-6 right-6 z-10 pointer-events-none text-center flex flex-col items-center justify-center">
                   <div className="flex items-center space-x-2 mb-1">
-                    <span className="text-xs font-light tracking-widest text-zinc-500 uppercase">
+                    <span 
+                      className="text-xs font-normal tracking-wide text-zinc-400 uppercase"
+                      style={{ fontFamily: "'Oswald', sans-serif" }}
+                    >
                       {coach.role}
                     </span>
                   </div>
-                  <h3 className="text-xl font-medium uppercase tracking-wide text-white truncate max-w-full">
+                  <h3 
+                    className="text-xl font-medium uppercase text-white truncate max-w-full"
+                    style={{ 
+                      fontFamily: "'Oswald', sans-serif",
+                      letterSpacing: "-0.01em"
+                    }}
+                  >
                     {coach.name}
                   </h3>
                 </div>
 
                 {/* Dynamic Overlay Text Content */}
-                {/* 🎨 CHANGED: Centered the text alignment for the expanded bio copy block */}
                 <div
                   className={`absolute inset-0 p-6 md:p-8 flex flex-col justify-start text-center transition-all duration-500 z-20 ${
                     isBioOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
                   }`}
                 >
-                  <p className="text-sm md:text-base font-light text-zinc-300 leading-relaxed tracking-wide pt-4 max-h-[80%] overflow-y-auto scrollbar-hide">
+                  <p className="text-sm md:text-base font-light text-zinc-300 leading-relaxed tracking-wide pt-4 max-h-[80%] overflow-y-auto scrollbar-hide font-sans">
                     {coach.bio}
                   </p>
                 </div>

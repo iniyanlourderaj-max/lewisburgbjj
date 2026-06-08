@@ -1,130 +1,159 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-scroll";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 15) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  /* 📋 UPDATED NAVIGATION ORDER & SCROLL TARGET FIXES */
   const navLinks = [
-    { title: "Features", href: "#features" },
-    { title: "Pricing", href: "#pricing" },
-    { title: "FAQ", href: "#faq" },
-    { title: "Contact", href: "#contact" },
+    { title: "About Us", target: "features" },
+    { title: "Pricing", target: "pricing" },
+    { title: "FAQ", target: "faq" },
+    { title: "Coaches", target: "coaches" },
+    { title: "Schedule", target: "schedule" }, // 🛠️ FIX: Changed from 'calendar' to 'schedule' to fix constant underlining
+    { title: "Learn More", target: "contact" }, // 🛠️ FIX: Replaced Contact with Learn More, routing to contact section
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 p-4 md:p-6">
-      {/* 🌟 Capsule Container with your original Gold Edge and explicit positioning */}
-      <div className="max-w-7xl mx-auto bg-zinc-900/90 backdrop-blur-md border border-[#D4AF37]/50 rounded-full px-6 py-2.5 flex items-center justify-between shadow-xl transition-all duration-300 min-h-[64px]">
+    <header className="fixed top-0 left-0 w-full z-50 antialiased transition-all duration-300">
+      
+      {/* CONTAINER FRAME */}
+      <div 
+        className={`w-full mx-auto border-b border-zinc-900/40 flex items-center justify-between min-h-[48px] px-6 md:px-12 transition-all duration-300 ease-out ${
+          isScrolled 
+            ? "bg-[#1A1A1A]/80 backdrop-blur-md py-1.5 shadow-md" 
+            : "bg-[#1A1A1A] py-2"
+        }`}
+      >
         
-        {/* 🥋 LEFT ZONE: Fixed Logo alignment without the overlapping text */}
-        <div className="flex items-center">
-          <a href="#" className="flex items-center cursor-pointer h-10 w-10 justify-center">
+        {/* 🥋 LEFT ZONE: Brand Block */}
+        <div className="flex items-center gap-2.5">
+          <Link 
+            to="hero" 
+            smooth={true} 
+            duration={500} 
+            className="flex items-center cursor-pointer h-5 w-5 justify-center"
+          >
             <img 
               src="/images/lbjj.svg" 
               alt="Lewisburg BJJ" 
-              className="h-10 w-10 object-contain block max-w-none"
+              className="h-5 w-5 object-contain block invert brightness-200" 
             />
-          </a>
+          </Link>
+          <div 
+            className="flex flex-col text-white font-bold leading-none tracking-tighter text-xs"
+            style={{ fontFamily: "'Oswald', sans-serif" }}
+          >
+            <span>LEWISBURG</span>
+            <span className="text-[#E9E151]">BJJ.</span>
+          </div>
         </div>
 
-        {/* CENTER ZONE: Core Nav Tabs */}
-        <nav className="hidden md:flex items-center gap-8 lg:gap-10">
-          {navLinks.map((link, idx) => (
+        {/* RIGHT STACK OVERLAY */}
+        <div className="flex items-center h-full">
+          
+          {/* CENTER LINKS MATCHING THE NAVIGATION */}
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8 pr-6">
+            {navLinks.map((link, idx) => (
+              <Link
+                key={idx}
+                to={link.target}
+                spy={true}
+                smooth={true}
+                offset={-55}
+                duration={500}
+                activeClass="text-white underline underline-offset-4"
+                className="text-zinc-300 hover:text-white text-sm lg:text-[15px] font-medium transition-colors duration-200 cursor-pointer hover:underline underline-offset-4 decoration-1 uppercase whitespace-nowrap"
+                style={{ 
+                  fontFamily: "'Oswald', sans-serif",
+                  letterSpacing: "-0.01em"
+                }}
+              >
+                {link.title}
+              </Link>
+            ))}
+          </nav>
+
+          {/* ⚡ SIGN UP CALL TO ACTION */}
+          <div className="hidden md:flex items-center h-full border-l border-zinc-800/50 py-2 pl-5 lg:pl-7 group">
             <a
-              key={idx}
-              href={link.href}
-              className="text-zinc-400 hover:text-white text-xs uppercase tracking-widest font-medium transition-colors duration-300"
+              href="https://lewisburg-bjj.gymdesk.com/signup" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-zinc-300 flex items-center gap-1.5 text-sm md:text-[15px] font-bold transition-colors duration-200 hover:underline underline-offset-4 uppercase"
+              style={{ 
+                fontFamily: "'Oswald', sans-serif",
+                letterSpacing: "-0.01em"
+              }}
             >
-              {link.title}
+              Sign Up
+              <span className="text-xs transform group-hover:translate-x-0.5 transition-transform duration-200 no-underline inline-block">
+                &rarr;
+              </span>
             </a>
-          ))}
-        </nav>
+          </div>
 
-        {/* RIGHT ZONE: Secure Gateway Routers */}
-        <div className="hidden md:flex items-center gap-4 lg:gap-6">
-          {/* 🔐 Direct Secure Member Login Portal Link */}
-          <a 
-            href="https://lewisburg-bjj.gymdesk.com/login" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-zinc-400 hover:text-white text-xs uppercase tracking-widest font-medium transition-colors duration-300"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-            </svg>
-            Account
-          </a>
-
-          {/* 🥋 Premium Gold-edged Sign Up Action Trigger */}
-          <a
-            href="https://lewisburg-bjj.gymdesk.com/signup" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border border-[#D4AF37]/40 bg-zinc-800/40 text-white hover:bg-white hover:text-zinc-950 px-5 py-2 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300"
-          >
-            Sign Up
-          </a>
         </div>
 
-        {/* MOBILE HAMBURGER TOGGLE BUTTON */}
+        {/* MOBILE DRAWER TRIGGER */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden text-zinc-400 hover:text-white p-1 focus:outline-none cursor-pointer"
+          className="md:hidden text-zinc-400 hover:text-white focus:outline-none cursor-pointer flex items-center"
         >
-          {isMobileMenuOpen ? (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="size-6">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+            {isMobileMenuOpen ? (
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="size-6">
+            ) : (
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-          )}
+            )}
+          </svg>
         </button>
 
       </div>
 
       {/* DYNAMIC MOBILE DRAWER PANEL MENU */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden mt-2 mx-2 bg-zinc-900 border border-zinc-800 rounded-2xl p-6 flex flex-col gap-5 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-200">
-          {navLinks.map((link, idx) => (
-            <a
-              key={idx}
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-zinc-300 hover:text-white text-sm uppercase tracking-widest font-medium py-1 border-b border-zinc-800/50"
-            >
-              {link.title}
-            </a>
-          ))}
-          
-          <div className="h-px bg-zinc-800 my-1" />
-
-          {/* Mobile Login Link */}
-          <a
-            href="https://lewisburg-bjj.gymdesk.com/login"
-            target="_blank"
-            rel="noopener noreferrer"
+      <div className={`absolute top-[100%] left-0 w-full bg-[#1A1A1A]/95 backdrop-blur-lg border-b border-zinc-900 p-5 flex flex-col gap-3 shadow-2xl origin-top transform transition-all duration-300 ease-out md:hidden ${isMobileMenuOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'}`}>
+        {navLinks.map((link, idx) => (
+          <Link
+            key={idx}
+            to={link.target}
+            spy={true}
+            smooth={true}
+            offset={-55}
+            duration={500}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="flex items-center gap-3 text-zinc-300 hover:text-white text-sm uppercase tracking-widest font-medium py-1"
+            className="text-zinc-300 hover:text-white text-base font-medium py-1.5 border-b border-zinc-900/60 cursor-pointer block uppercase"
+            style={{ fontFamily: "'Oswald', sans-serif" }}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-            </svg>
-            Student Account
-          </a>
+            {link.title}
+          </Link>
+        ))}
 
-          {/* Mobile Sign Up Action Link */}
-          <a
-            href="https://lewisburg-bjj.gymdesk.com/signup"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="w-full text-center bg-white text-zinc-950 font-bold uppercase tracking-widest text-xs py-3 rounded-xl mt-2 block transition-transform active:scale-95"
-          >
-            Sign Up / Register
-          </a>
-        </div>
-      )}
+        <a
+          href="https://lewisburg-bjj.gymdesk.com/signup"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="w-full text-center text-white border border-zinc-800 font-bold text-base py-2.5 rounded-lg mt-1 block hover:bg-zinc-900 transition-colors uppercase"
+          style={{ fontFamily: "'Oswald', sans-serif" }}
+        >
+          Sign Up &rarr;
+        </a>
+      </div>
     </header>
   );
 };

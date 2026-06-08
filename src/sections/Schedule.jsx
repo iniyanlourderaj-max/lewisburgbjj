@@ -78,11 +78,27 @@ const Schedule = () => {
         <div className="max-w-7xl mx-auto">
           
           {/* Header Typography Section */}
-          <div className="flex flex-col items-center justify-center text-center mb-16 space-y-3">
-            <h2 className="text-3xl md:text-5xl font-light tracking-wider uppercase text-white leading-tight">
-              Class <span className="font-normal text-zinc-400">Times</span>
+          <div className="flex flex-col items-center justify-center text-center mb-16 space-y-4">
+            
+            {/* 🥋 PRIMARY HEADER: Changed to use 'Oswald', rendered pure white, upper-cased, with responsive sizing */}
+            <h2 
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white uppercase select-none"
+              style={{ 
+                fontFamily: "'Oswald', sans-serif",
+                letterSpacing: "-0.01em"
+              }}
+            >
+              Class Times
             </h2>
-            <p className="text-zinc-500 text-xs md:text-sm font-medium tracking-[0.3em] uppercase pt-2">
+
+            {/* 🥋 SUB-TAGLINE: Changed to use 'Oswald', rendered pure white, with adjusted scale */}
+            <p 
+              className="text-base md:text-lg uppercase font-medium text-white block pt-1"
+              style={{ 
+                fontFamily: "'Oswald', sans-serif",
+                letterSpacing: "0.06em"
+              }}
+            >
               Find your session. Step onto the mats.
             </p>
           </div>

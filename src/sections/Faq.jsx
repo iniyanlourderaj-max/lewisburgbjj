@@ -3,104 +3,87 @@ import { Element } from "react-scroll";
 import { faq } from "../constants/index.jsx";
 
 const Faq = () => {
-  const halfLength = Math.floor(faq.length / 2);
   const [openItems, setOpenItems] = useState({});
 
   const toggleItem = (id) => {
     setOpenItems((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const renderQuestionItem = (item, index) => {
-    const isOpen = !!openItems[item.id];
-    
-    // 🔢 CHANGED: Offset the index by +1 so numbering starts at "01" instead of "00"
-    const formattedNumber = String(index + 1).padStart(2, "0");
-
-    return (
-      // 🃏 CHANGED: Converted from a flat line into a high-contrast floating card container
-      <div 
-        key={item.id} 
-        className="relative bg-zinc-900/30 border border-zinc-800/40 rounded-2xl p-5 md:p-6 mb-4 shadow-xl backdrop-blur-md hover:border-zinc-700/50 transition-all duration-300 last:mb-0"
-      >
-        <div 
-          className="flex items-start justify-between gap-4 cursor-pointer group select-none"
-          onClick={() => toggleItem(item.id)}
-        >
-          <div className="space-y-1.5 flex-1">
-            <span className="text-[11px] tracking-widest text-zinc-500 block font-medium">
-              {formattedNumber}
-            </span>
-            <h3 className="text-lg md:text-xl font-normal tracking-wide text-zinc-100 group-hover:text-white transition-colors duration-300">
-              {item.question}
-            </h3>
-          </div>
-
-          <button
-            className={`size-10 rounded-full border flex items-center justify-center text-xl font-light transition-all duration-300 shrink-0 ${
-              isOpen 
-                ? "bg-white text-zinc-950 border-white rotate-45" 
-                : "bg-zinc-900/80 border-zinc-800 text-zinc-400 group-hover:border-zinc-500 group-hover:text-white"
-            }`}
-            aria-label={isOpen ? "Close question" : "Open question"}
-          >
-            +
-          </button>
-        </div>
-
-        <div className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100 pt-4 mt-2 border-t border-zinc-800/30" : "grid-rows-[0fr] opacity-0"}`}>
-          <div className="overflow-hidden pr-4">
-            <p className="text-sm md:text-base font-light text-zinc-400 leading-relaxed tracking-wide">
-              {item.answer}
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   return (
-    <section id="faq" className="bg-[#222222] text-white relative overflow-hidden transition-colors duration-300">
-      <Element name="faq" className="relative">
+    // 🎨 Background matching the exact bone/beige hex code from image_89ed62.png
+    <section id="faq" className="bg-[#EAE6DF] text-zinc-950 py-24 antialiased">
+      <Element name="faq" className="max-w-4xl mx-auto px-6">
         
-        {/* Header Block Container */}
-        <div className="container relative z-2 pt-24 pb-16">
-          <div className="max-w-4xl mx-auto flex flex-col items-center justify-center text-center space-y-3">
-            <h2 className="text-3xl md:text-5xl font-light tracking-wider uppercase text-white leading-tight">
-              Am I too old? Will I get hurt? <br className="max-md:hidden" /> Do I need to be in shape?
-            </h2>
-            <p className="text-zinc-500 text-xs md:text-sm font-medium tracking-[0.3em] uppercase pt-2">
-              You've got questions, we've got answers.
-            </p>
-          </div>
+        {/* Main Section Header Layout */}
+        <div className="mb-10">
+          {/* ⚡ FIXED FONT: Styled to look identical to the "FAQS" title in image_89e63f.jpg */}
+          <h2 
+            className="text-4xl md:text-5xl font-bold uppercase tracking-normal text-zinc-900 mb-4"
+            style={{ fontFamily: "'Oswald', 'Bebas Neue', sans-serif", transform: "scaleY(1.05)" }}
+          >
+            FAQS
+          </h2>
+          
+          {/* ⚡ PRODUCT INFO: Dull muted gold/brown subheader as seen in image_89e63f.jpg */}
+          <p 
+            className="text-[#9A8454] text-sm md:text-base font-bold uppercase tracking-wide"
+            style={{ fontFamily: "'Oswald', 'Bebas Neue', sans-serif" }}
+          >
+            You've got questions, we've got answers.
+          </p>
         </div>
 
-        {/* Questions List Section Frame Grid */}
-        <div className="relative z-2 border-y border-zinc-800/60 bg-zinc-950/10 backdrop-blur-sm pb-24">
-          <div className="container flex gap-6 lg:gap-10 max-lg:flex-col relative">
-            
-            {/* Center Badge Accent */}
-            <div className="rounded-full absolute -top-10 left-[calc(50%-40px)] z-10 flex size-20 items-center justify-center border border-zinc-800 bg-zinc-950 shadow-2xl max-lg:hidden">
-              <img 
-                src="/images/lbjj.svg" 
-                alt="Lewisburg BJJ" 
-                className="size-11 object-contain" 
-              />
-            </div>
+        {/* Minimalist Flat List Container */}
+        <div className="border-t border-zinc-500/80">
+          {faq.map((item) => {
+            const isOpen = !!openItems[item.id];
 
-            {/* Left Column Stack */}
-            <div className="relative flex-1 pt-12 md:pt-16 flex flex-col gap-4">
-              {faq.slice(0, halfLength).map((item, index) => renderQuestionItem(item, index))}
-            </div>
+            return (
+              <div 
+                key={item.id} 
+                className="border-b border-zinc-500/80"
+              >
+                {/* Clickable Header Row */}
+                <div 
+                  className="flex items-center justify-between gap-6 py-4 cursor-pointer group select-none"
+                  onClick={() => toggleItem(item.id)}
+                >
+                  {/* ⚡ QUESTION STYLING: Bold, compact, flat-edged compressed sans-serif */}
+                  <h3 
+                    className="text-lg md:text-xl font-bold uppercase tracking-wide text-zinc-900 group-hover:text-black transition-colors duration-200 leading-none"
+                    style={{ fontFamily: "'Oswald', 'Bebas Neue', sans-serif" }}
+                  >
+                    {item.question}
+                  </h3>
 
-            {/* Right Column Stack */}
-            <div className="relative flex-1 lg:pt-16 flex flex-col gap-4">
-              {faq.slice(halfLength).map((item, index) => renderQuestionItem(item, halfLength + index))}
-            </div>
-          </div>
+                  {/* Clean text-based tracking '+' token from image_89e63f.jpg */}
+                  <span 
+                    className={`text-xl md:text-2xl font-light text-zinc-600 group-hover:text-black transition-transform duration-300 shrink-0 select-none ${
+                      isOpen ? "rotate-45 text-black" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </div>
 
-          {/* Minimalist Vertical Center Divider Wire (Hidden on Mobile) */}
-          <div className="absolute left-[calc(50%-0.5px)] top-0 -z-1 h-full w-px bg-zinc-800/20 max-lg:hidden" />
+                {/* Animated Answer Collapse Tray */}
+                <div 
+                  className={`grid transition-all duration-300 ease-in-out ${
+                    isOpen ? "grid-rows-[1fr] opacity-100 pb-5" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden max-w-3xl">
+                    {/* BODY TEXT: Simple fallback clean text matching your second screen reference */}
+                    <p className="text-zinc-800 text-sm md:text-base font-normal leading-relaxed font-sans">
+                      {item.answer}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
+
       </Element>
     </section>
   );

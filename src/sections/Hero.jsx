@@ -1,5 +1,5 @@
+import React from "react";
 import { Element, Link as LinkScroll } from "react-scroll";
-import Button from "../components/Button.jsx";
 
 const Hero = () => {
   return (
@@ -8,41 +8,61 @@ const Hero = () => {
       {/* 📸 FULL BLEED BACKGROUND IMAGE LAYER */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1920&q=80" 
+          src="/images/lbjj___.png" 
           alt="Lewisburg BJJ Academy"
           className="w-full h-full object-cover object-center"
         />
-        {/* Dark overlay mask to maintain high typographical contrast */}
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-black/55 backdrop-blur-[0.5px]" />
       </div>
 
-      <Element name="hero" className="relative z-2 w-full">
-        <div className="container flex flex-col items-center justify-center">
+      <Element name="hero" className="relative z-10 w-full px-5">
+        <div className="max-w-4xl mx-auto flex flex-col items-center justify-center text-center">
           
-          {/* 🎯 CENTERING WRAPPER: Changed text to text-center and added mx-auto */}
-          <div className="relative z-2 max-w-2xl text-center mx-auto flex flex-col items-center">
-            
-            {/* Tagline / Location */}
-            <div className="caption small-2 uppercase tracking-widest text-zinc-400 font-bold mb-3">
-              Lewisburg, PA
-            </div>
-            
-            {/* Headline */}
-            <h1 className="mb-6 h1 text-white uppercase font-black tracking-tighter max-lg:mb-7 max-lg:text-6xl max-md:mb-4 max-md:text-4xl max-md:leading-none">
-              Brazilian Jiu-Jitsu
-            </h1>
-            
-            {/* Description Subtext */}
-            <p className="max-w-md mb-12 text-xl text-zinc-400 leading-relaxed font-light max-md:mb-10 max-md:text-lg">
-              Martial Arts & Self-Defense Training for Everyone.
-            </p>
-            
-            {/* CTA Button Updated to "Join Today" */}
-            <LinkScroll to="features" offset={-100} spy smooth>
-              <Button>find out more</Button>
-            </LinkScroll>
-            
-          </div>
+          {/* 🥋 UPPER TAGLINE */}
+          <p className="text-zinc-300 text-xs md:text-sm font-normal tracking-[0.2em] mb-4 md:mb-5 font-sans uppercase">
+            Discover The Art Of
+          </p>
+          
+          {/* 🎨 MAIN HEADLINE (Bad Brush Custom): 
+              - The <br /> tag forces "Brazilian" and "Jiu Jitsu" onto separate lines across all device screen sizes.
+          */}
+          <h1 
+            className="text-white uppercase text-6xl sm:text-7xl md:text-6xl lg:text-7xl font-normal tracking-normal leading-[1.15] md:leading-[1.1] mb-4 md:mb-5 select-none"
+            style={{ 
+              fontFamily: "'Bad Brush Custom', sans-serif",
+              display: "unset",
+              textShadow: "rgba(0, 0, 0, 0.6) 0px 0px 25.5px"
+            }}
+          >
+            Brazilian <br /> Jiu Jitsu
+          </h1>
+
+          {/* 🏛️ BRAND ANCHOR TEXT (Oswald) */}
+          <h2 
+            className="text-white uppercase font-bold text-4xl sm:text-5xl md:text-4xl lg:text-5xl tracking-tighter mb-4 mt-2"
+            style={{ 
+              fontFamily: "'Oswald', sans-serif",
+              letterSpacing: "-0.03em" 
+            }}
+          >
+            Lewisburg BJJ<span className="text-[#E9E151]">.</span>
+          </h2>
+          
+          {/* 📝 SECONDARY SUBTEXT DESCRIPTION */}
+          <p className="max-w-md text-zinc-300 text-xs sm:text-sm md:text-base font-normal tracking-normal leading-relaxed mb-8 md:mb-10 font-sans">
+            Premium Martial Arts Academy in Lewisburg, PA
+          </p>
+          
+          {/* ⚡ THE ACTION BUTTON */}
+          <LinkScroll to="features" offset={-55} spy smooth>
+            <button 
+              className="bg-[#E9E151] hover:bg-[#d6ce43] text-black text-xs md:text-sm font-bold uppercase tracking-wider py-3.5 px-10 md:py-4 md:px-12 transition-all duration-200 transform active:scale-95 shadow-xl cursor-pointer"
+              style={{ fontFamily: "'Oswald', sans-serif" }}
+            >
+              Try Free Class
+            </button>
+          </LinkScroll>
+          
         </div>
       </Element>
     </section>
