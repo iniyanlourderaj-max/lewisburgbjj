@@ -115,7 +115,9 @@ export const plans = [
     priceYearly: 110,
     caption: "BJJ + Fitness + Recovery Access",
     badge: "A",
-    gymdeskSlug: "adult-base-rate", // ← Swap with actual Gymdesk plan ID/slug tomorrow
+    // 🔗 Gymdesk Slugs: Update these strings to match the plan slugs in your Gymdesk Dashboard
+    gymdeskSlugMonthToMonth: "adult-base-month-to-month", 
+    gymdeskSlug12Month: "adult-base-12-month", 
     features: [
       "Unlimited Jiu-Jitsu & Grappling",
       "Functional Fitness / Conditioning",
@@ -134,7 +136,8 @@ export const plans = [
     caption: "Complete Academy Access Pack",
     badge: "★",
     isHighlighted: true,
-    gymdeskSlug: "adult-all-in-access", // ← Swap with actual Gymdesk plan ID/slug tomorrow
+    gymdeskSlugMonthToMonth: "adult-all-in-month-to-month",
+    gymdeskSlug12Month: "adult-all-in-12-month",
     features: [
       "Everything in Adult Base Tier",
       "Full Striking & Muay Thai Classes",
@@ -152,7 +155,9 @@ export const plans = [
     priceYearly: 100,
     caption: "18-Month Maximum Value Track",
     badge: "E",
-    gymdeskSlug: "executive-term-track", // ← Swap with actual Gymdesk plan ID/slug tomorrow
+    // This is a fixed term plan, so both states can point to the same contract configuration slug
+    gymdeskSlugMonthToMonth: "executive-term-track",
+    gymdeskSlug12Month: "executive-term-track",
     features: [
       "Lowest available locked-in rate",
       "Unlimited Jiu-Jitsu & Grappling",
@@ -175,7 +180,8 @@ export const plans = [
     caption: "Discipline, Fitness & Self-Defense",
     badge: "K",
     isHighlighted: true,
-    gymdeskSlug: "youth-foundations", // ← Swap with actual Gymdesk plan ID/slug tomorrow
+    gymdeskSlugMonthToMonth: "youth-foundations-month-to-month",
+    gymdeskSlug12Month: "youth-foundations-12-month",
     features: [
       "Unlimited Youth BJJ Classes",
       "Coordination & Athletic Drilling",
@@ -193,7 +199,8 @@ export const plans = [
     priceYearly: 45,
     caption: "Exactly 50% Base Tier Discount",
     badge: "S",
-    gymdeskSlug: "sibling-add-on", // ← Swap with actual Gymdesk plan ID/slug tomorrow
+    gymdeskSlugMonthToMonth: "sibling-add-on-month-to-month",
+    gymdeskSlug12Month: "sibling-add-on-12-month",
     features: [
       "Matches primary youth plan access",
       "Unlimited Youth BJJ Classes",
@@ -215,7 +222,8 @@ export const plans = [
     priceYearly: 50,
     caption: "Mobility & Breath Control Access",
     badge: "Y",
-    gymdeskSlug: "yoga-standalone", // ← Swap with actual Gymdesk plan ID/slug tomorrow
+    gymdeskSlugMonthToMonth: "yoga-standalone",
+    gymdeskSlug12Month: "yoga-standalone",
     features: [
       "All structured Yoga sessions",
       "Flexibility & Recovery focus",
@@ -234,7 +242,8 @@ export const plans = [
     caption: "Pick Any Two Standalone Tiers",
     badge: "D",
     isHighlighted: true,
-    gymdeskSlug: "dual-standalone-pack", // ← Swap with actual Gymdesk plan ID/slug tomorrow
+    gymdeskSlugMonthToMonth: "dual-standalone-pack",
+    gymdeskSlug12Month: "dual-standalone-pack",
     features: [
       "Combine Yoga + Striking together",
       "Or pair with customized gym loops",
@@ -252,7 +261,8 @@ export const plans = [
     priceYearly: 50,
     caption: "Stand-Up & Boxing Mechanics",
     badge: "ST",
-    gymdeskSlug: "striking-standalone", // ← Swap with actual Gymdesk plan ID/slug tomorrow
+    gymdeskSlugMonthToMonth: "striking-standalone",
+    gymdeskSlug12Month: "striking-standalone",
     features: [
       "All Boxing/Striking curriculum",
       "Heavy bag & padwork drills",
@@ -270,7 +280,8 @@ export const plans = [
     priceYearly: 120,
     caption: "All Non-BJJ Specialty Services",
     badge: "T",
-    gymdeskSlug: "triple-standalone-pack", // ← Swap with actual Gymdesk plan ID/slug tomorrow
+    gymdeskSlugMonthToMonth: "triple-standalone-pack",
+    gymdeskSlug12Month: "triple-standalone-pack",
     features: [
       "Full Access: Striking + Yoga + Fitness",
       "Complete functional gym floor access",
@@ -292,7 +303,8 @@ export const plans = [
     priceYearly: 20,
     caption: "Single Session Access",
     badge: "1P",
-    gymdeskSlug: "mat-drop-in-pass", // ← Swap with actual Gymdesk plan ID/slug tomorrow
+    gymdeskSlugMonthToMonth: "mat-drop-in-pass",
+    gymdeskSlug12Month: "mat-drop-in-pass",
     features: [
       "Valid for any single scheduled class",
       "Perfect for traveling practitioners",
@@ -311,7 +323,8 @@ export const plans = [
     caption: "Test Drive the Entire Academy",
     badge: "TR",
     isHighlighted: true,
-    gymdeskSlug: "two-week-trial", // ← Swap with actual Gymdesk plan ID/slug tomorrow
+    gymdeskSlugMonthToMonth: "two-week-trial",
+    gymdeskSlug12Month: "two-week-trial",
     features: [
       "14 consecutive days of access",
       "Try BJJ, Striking, & Yoga tiers",
@@ -329,7 +342,8 @@ export const plans = [
     priceYearly: 90,
     caption: "Flexible Casual Punch Pass",
     badge: "5P",
-    gymdeskSlug: "5-class-punch-card", // ← Swap with actual Gymdesk plan ID/slug tomorrow
+    gymdeskSlugMonthToMonth: "5-class-punch-card",
+    gymdeskSlug12Month: "5-class-punch-card",
     features: [
       "5 class credits loaded to profile",
       "Credits expire after 90 days",
@@ -347,7 +361,8 @@ export const plans = [
     priceYearly: 170,
     caption: "Bulk Session Savings Pack",
     badge: "10",
-    gymdeskSlug: "10-class-punch-card", // ← Swap with actual Gymdesk plan ID/slug tomorrow
+    gymdeskSlugMonthToMonth: "10-class-punch-card",
+    gymdeskSlug12Month: "10-class-punch-card",
     features: [
       "10 class credits loaded to profile",
       "Saves $30 over raw drop-in rates",
@@ -365,7 +380,8 @@ export const plans = [
     priceYearly: 320,
     caption: "Ultimate Schedule Flexibility",
     badge: "20",
-    gymdeskSlug: "20-class-punch-card", // ← Swap with actual Gymdesk plan ID/slug tomorrow
+    gymdeskSlugMonthToMonth: "20-class-punch-card",
+    gymdeskSlug12Month: "20-class-punch-card",
     features: [
       "20 class credits loaded to profile",
       "Saves $80 over individual pass rates",
@@ -376,7 +392,6 @@ export const plans = [
     footnote: ""
   }
 ];
-
 
 export const testimonials = [
   {

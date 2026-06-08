@@ -88,6 +88,16 @@ const Pricing = () => {
               // Check if the current card belongs to the selected tab
               const isVisible = plan.category === activeCategory;
 
+              // 🛠️ DYNAMIC SLUG TRACKER: Selects the clean slug fields matching the toggle slider state
+              const targetSlug = isNoCommitment 
+                ? plan.gymdeskSlugMonthToMonth 
+                : plan.gymdeskSlug12Month;
+
+              // 🔗 BACKEND INTEGRATION LINK: Compiles the custom query endpoint parameters for registration routing
+              const targetSignupUrl = targetSlug
+                ? `https://lewisburg-bjj.gymdesk.com/signup?plan=${targetSlug}`
+                : "https://lewisburg-bjj.gymdesk.com/signup";
+
               return (
                 <div
                   key={plan.id}
@@ -165,18 +175,21 @@ const Pricing = () => {
                     ))}
                   </ul>
 
-                  {/* Bottom Trigger Action Buttons */}
+                  {/* Bottom Trigger Action Links */}
                   <div className="w-full">
-                    <button 
+                    <a 
+                      href={targetSignupUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className={clsx(
-                        "w-full py-3.5 px-6 rounded-xl text-sm font-bold uppercase tracking-wider transition-all duration-300 font-poppins cursor-pointer",
+                        "block text-center w-full py-3.5 px-6 rounded-xl text-sm font-bold uppercase tracking-wider transition-all duration-300 font-poppins cursor-pointer",
                         plan.isHighlighted 
                           ? "bg-[#D4AF37] text-zinc-950 hover:bg-white shadow-md" 
                           : "bg-zinc-950 text-white border border-zinc-800 hover:border-[#D4AF37] hover:text-[#D4AF37]"
                       )}
                     >
                       Select Track
-                    </button>
+                    </a>
 
                     {/* Footnote string fields */}
                     {plan.footnote && (
