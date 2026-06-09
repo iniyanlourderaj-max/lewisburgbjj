@@ -81,25 +81,27 @@ const Features = () => {
               </div>
             ))}
 
-            {/* Bottom details row */}
-            <ul className="relative flex justify-around flex-grow px-[3%] border-t border-zinc-800 bg-zinc-950/40 w-full max-md:hidden">
+            {/* 🛠️ FIX: REMOVED max-md:hidden to make it appear on mobile, added grid styling */}
+            {/* 🎛️ FEATURES BOTTOM DETAILS ROW */}
+            <ul className="relative grid grid-cols-2 justify-items-center w-full border-t border-zinc-800 bg-zinc-950/40 p-4 gap-y-4 gap-x-2 md:flex md:justify-around md:flex-grow md:px-[3%] md:py-0 md:gap-0 max-md:bg-zinc-950 max-md:border max-md:rounded-2xl">
+              
+              {/* Subtle mobile center split divider line */}
+              <div className="block md:hidden absolute left-1/2 top-4 bottom-4 w-px bg-zinc-800/50 transform -translate-x-1/2 pointer-events-none" />
+
               {details.map(({ id, title }) => (
-                <li key={id} className="relative py-6 px-3 flex flex-col items-center justify-center flex-1">
-                  
-                  {/* 🎨 UPDATED TO BAD BRUSH CUSTOM:
-                      - Assigned 'Bad Brush Custom' as the principal family.
-                      - Kept font size punchy (text-base) and lowered tracking back to normal since script fonts shouldn't stretch out too far.
-                      - Kept leading tight to maintain your compact row layout requirements.
-                  */}
+                <li 
+                  key={id} 
+                  className="relative py-3 px-3 flex flex-col items-center justify-center text-center w-full md:py-6 md:flex-1"
+                >
+                  {/* 🎨 BAD BRUSH CUSTOM FONTS */}
                   <h3 
-                    className="relative z-2 max-w-64 mx-auto my-0 text-white text-base lg:text-lg font-normal tracking-normal uppercase text-center leading-tight select-none"
+                    className="relative z-2 max-w-64 mx-auto my-0 text-white text-sm sm:text-base lg:text-lg font-normal tracking-normal uppercase text-center leading-tight select-none"
                     style={{ 
                       fontFamily: "'Bad Brush Custom', sans-serif"
                     }}
                   >
                     {title}
                   </h3>
-                  
                 </li>
               ))}
             </ul>

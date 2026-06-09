@@ -18,16 +18,10 @@ const Hero = () => {
       <Element name="hero" className="relative z-10 w-full px-5">
         <div className="max-w-4xl mx-auto flex flex-col items-center justify-center text-center">
           
-          {/* 🥋 UPPER TAGLINE */}
-          <p className="text-zinc-300 text-xs md:text-sm font-normal tracking-[0.2em] mb-4 md:mb-5 font-sans uppercase">
-            Discover The Art Of
-          </p>
-          
-          {/* 🎨 MAIN HEADLINE (Bad Brush Custom): 
-              - The <br /> tag forces "Brazilian" and "Jiu Jitsu" onto separate lines across all device screen sizes.
-          */}
+        
+          {/* 🎨 MAIN HEADLINE (Bad Brush Custom) - MADE LARGER */}
           <h1 
-            className="text-white uppercase text-6xl sm:text-7xl md:text-6xl lg:text-7xl font-normal tracking-normal leading-[1.15] md:leading-[1.1] mb-4 md:mb-5 select-none"
+            className="text-white uppercase text-7xl sm:text-8xl md:text-8xl lg:text-9xl font-normal tracking-normal leading-[1.05] md:leading-[1.0] mb-5 md:mb-6 select-none"
             style={{ 
               fontFamily: "'Bad Brush Custom', sans-serif",
               display: "unset",
@@ -54,12 +48,12 @@ const Hero = () => {
           </p>
           
           {/* ⚡ THE ACTION BUTTON */}
-          <LinkScroll to="features" offset={-55} spy smooth>
+          <LinkScroll to="pricing" offset={-55} spy smooth>
             <button 
               className="bg-[#E9E151] hover:bg-[#d6ce43] text-black text-xs md:text-sm font-bold uppercase tracking-wider py-3.5 px-10 md:py-4 md:px-12 transition-all duration-200 transform active:scale-95 shadow-xl cursor-pointer"
               style={{ fontFamily: "'Oswald', sans-serif" }}
             >
-              Try Free Class
+              Explore memberships 
             </button>
           </LinkScroll>
           

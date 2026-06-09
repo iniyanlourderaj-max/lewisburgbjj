@@ -103,296 +103,288 @@ export const faq = [
 
 // constants/plans.js
 
+// src/data/plans.js
+
+// src/data/plans.js
+
+// src/data/plans.js
+
+// src/data/plans.js
+
+// src/data/plans.js
+
 export const plans = [
   // ==========================================
-  // 1. ADULT BJJ & GRAPPLING
+  // SECTION 1: BASE MEMBERSHIP TAB (From image_6db437.jpg & image_6d3ee3.png)
   // ==========================================
   {
-    id: "adult-base",
-    category: "adult",
-    title: "Adult Base Rate",
-    priceMonthly: 140,
-    priceYearly: 110,
-    caption: "BJJ + Fitness + Recovery Access",
-    badge: "A",
-    // 🔗 Gymdesk Slugs: Update these strings to match the plan slugs in your Gymdesk Dashboard
-    gymdeskSlugMonthToMonth: "adult-base-month-to-month", 
-    gymdeskSlug12Month: "adult-base-12-month", 
-    features: [
-      "Unlimited Jiu-Jitsu & Grappling",
-      "Functional Fitness / Conditioning",
-      "Sauna & Cold Plunge Recovery",
-      "Alternate Commitments: 3M ($130) | 6M ($120)",
-      "Dependents receive 50% Off base rate",
-    ],
-    footnote: "*Alternate durations available: 18-Month Commitment cuts rate down to $100/mo."
+    id: "base-18m",
+    category: "base-membership",
+    title: "18-Month Base Track",
+    price: 100, // image_6db437.jpg
+    period: "/ mo",
+    caption: "Unlimited BJJ classes, fitness classes, cold plunge and sauna.",
+    gymdeskSlug: "adult-base-18-month",
+    features: ["Unlimited BJJ & Grappling Access", "Functional Fitness Gym Floor", "Sauna & Cold Plunge Recovery Loop"],
   },
   {
-    id: "adult-all-in",
-    category: "adult",
-    title: "Adult All-In Access",
-    priceMonthly: 175,
-    priceYearly: 145,
-    caption: "Complete Academy Access Pack",
-    badge: "★",
-    isHighlighted: true,
-    gymdeskSlugMonthToMonth: "adult-all-in-month-to-month",
-    gymdeskSlug12Month: "adult-all-in-12-month",
-    features: [
-      "Everything in Adult Base Tier",
-      "Full Striking & Muay Thai Classes",
-      "Premium Yoga & Mobility Sessions",
-      "Priority Special Seminar Access",
-      "2 Guest passes included monthly",
-    ],
-    footnote: ""
+    id: "base-12m",
+    category: "base-membership",
+    title: "12-Month Base Track",
+    price: 110, // image_6db437.jpg
+    period: "/ mo",
+    caption: "Unlimited BJJ classes, fitness classes, cold plunge and sauna.",
+    gymdeskSlug: "adult-base-12-month",
+    features: ["Unlimited BJJ & Grappling Access", "Functional Fitness Gym Floor", "Sauna & Cold Plunge Recovery Loop"],
   },
   {
-    id: "adult-18m",
-    category: "adult",
-    title: "Executive Term Track",
-    priceMonthly: 100,
-    priceYearly: 100,
-    caption: "18-Month Maximum Value Track",
-    badge: "E",
-    // This is a fixed term plan, so both states can point to the same contract configuration slug
-    gymdeskSlugMonthToMonth: "executive-term-track",
-    gymdeskSlug12Month: "executive-term-track",
-    features: [
-      "Lowest available locked-in rate",
-      "Unlimited Jiu-Jitsu & Grappling",
-      "Functional Fitness & Locker Access",
-      "Sauna & Cold Plunge Recovery",
-      "No price increases over lock term",
-    ],
-    footnote: "*Requires fixed 18-month agreement layout structure."
+    id: "base-6m",
+    category: "base-membership",
+    title: "6-Month Base Track",
+    price: 120, // image_6db437.jpg
+    period: "/ mo",
+    caption: "Unlimited BJJ classes, fitness classes, cold plunge and sauna.",
+    gymdeskSlug: "adult-base-6-month",
+    features: ["Unlimited BJJ & Grappling Access", "Functional Fitness Gym Floor", "Sauna & Cold Plunge Recovery Loop"],
+  },
+  {
+    id: "base-3m",
+    category: "base-membership",
+    title: "3-Month Base Track",
+    price: 130, // image_6db437.jpg
+    period: "/ mo",
+    caption: "Unlimited BJJ classes, fitness classes, cold plunge and sauna.",
+    gymdeskSlug: "adult-base-3-month",
+    features: ["Unlimited BJJ & Grappling Access", "Functional Fitness Gym Floor", "Sauna & Cold Plunge Recovery Loop"],
+  },
+  {
+    id: "base-1m",
+    category: "base-membership",
+    title: "Adult 1 Month Track",
+    price: 140, // image_6d3ee3.png
+    period: "/ mo",
+    caption: "1 month • Unlimited BJJ, Strength & Conditioning, Striking",
+    gymdeskSlug: "adult-base-month-to-month",
+    features: ["No contract commitment freedom", "Unlimited BJJ & Fitness floor", "Sauna & Cold Plunge Recovery Loop"],
+  },
+  {
+    id: "base-yearly-pif",
+    category: "base-membership",
+    title: "Adult Whole Year",
+    price: 1100, // image_6d3ee3.png
+    period: "/ yr",
+    caption: "1 year • Unlimited BJJ, Strength & Conditioning, Striking",
+    gymdeskSlug: "adult-yearly-paid-in-full",
+    features: ["Saves cash over rolling monthly tracks", "Full year access locked in upfront", "All base features included entirely"],
   },
 
   // ==========================================
-  // 2. KIDS PROGRAMS
+  // SECTION 2: ALL-IN MEMBERSHIP TAB (From image_6db437.jpg)
   // ==========================================
   {
-    id: "kids-base",
-    category: "kids",
-    title: "Youth Foundations",
-    priceMonthly: 120,
-    priceYearly: 90,
-    caption: "Discipline, Fitness & Self-Defense",
-    badge: "K",
+    id: "allin-18m",
+    category: "all-in-membership",
+    title: "18-Month All-In",
+    price: 135, // Base $100 + $35 (image_6db437.jpg)
+    period: "/ mo",
+    caption: "Yoga + Striking + BJJ + Functional Fitness + Cold Plunge & Sauna",
     isHighlighted: true,
-    gymdeskSlugMonthToMonth: "youth-foundations-month-to-month",
-    gymdeskSlug12Month: "youth-foundations-12-month",
-    features: [
-      "Unlimited Youth BJJ Classes",
-      "Coordination & Athletic Drilling",
-      "Ego-Free Safe Team Environment",
-      "Built-in $20 Family Savings",
-      "50% Off for added siblings",
-    ],
-    footnote: ""
+    gymdeskSlug: "adult-all-in-18-month",
+    features: ["Complete All-In Premium tier savings", "Everything included in base track", "Full standalone Yoga & Striking classes"],
   },
   {
-    id: "kids-sibling",
-    category: "kids",
-    title: "Sibling Add-On Rate",
-    priceMonthly: 60,
-    priceYearly: 45,
-    caption: "Exactly 50% Base Tier Discount",
-    badge: "S",
-    gymdeskSlugMonthToMonth: "sibling-add-on-month-to-month",
-    gymdeskSlug12Month: "sibling-add-on-12-month",
-    features: [
-      "Matches primary youth plan access",
-      "Unlimited Youth BJJ Classes",
-      "Coordination & Athletic Drilling",
-      "Valid for second child or more",
-      "Maintains family billing file layout",
-    ],
-    footnote: ""
+    id: "allin-12m",
+    category: "all-in-membership",
+    title: "12-Month All-In",
+    price: 145, // Base $110 + $35 (image_6db437.jpg)
+    period: "/ mo",
+    caption: "Yoga + Striking + BJJ + Functional Fitness + Cold Plunge & Sauna",
+    isHighlighted: true,
+    gymdeskSlug: "adult-all-in-12-month",
+    features: ["Complete All-In Premium tier savings", "Everything included in base track", "Full standalone Yoga & Striking classes"],
+  },
+  {
+    id: "allin-6m",
+    category: "all-in-membership",
+    title: "6-Month All-In",
+    price: 155, // Base $120 + $35 (image_6db437.jpg)
+    period: "/ mo",
+    caption: "Yoga + Striking + BJJ + Functional Fitness + Cold Plunge & Sauna",
+    isHighlighted: true,
+    gymdeskSlug: "adult-all-in-6-month",
+    features: ["Complete All-In Premium tier savings", "Everything included in base track", "Full standalone Yoga & Striking classes"],
+  },
+  {
+    id: "allin-3m",
+    category: "all-in-membership",
+    title: "3-Month All-In",
+    price: 165, // Base $130 + $35 (image_6db437.jpg)
+    period: "/ mo",
+    caption: "Yoga + Striking + BJJ + Functional Fitness + Cold Plunge & Sauna",
+    isHighlighted: true,
+    gymdeskSlug: "adult-all-in-3-month",
+    features: ["Complete All-In Premium tier savings", "Everything included in base track", "Full standalone Yoga & Striking classes"],
+  },
+  {
+    id: "allin-1m",
+    category: "all-in-membership",
+    title: "1-Month All-In",
+    price: 175, // Base $140 + $35 (image_6db437.jpg)
+    period: "/ mo",
+    caption: "Yoga + Striking + BJJ + Functional Fitness + Cold Plunge & Sauna",
+    isHighlighted: true,
+    gymdeskSlug: "adult-all-in-month-to-month",
+    features: ["No long-term contract constraints", "Everything included in base track", "Full standalone Yoga & Striking classes"],
   },
 
   // ==========================================
-  // 3. SPECIALTY PROGRAMS
+  // SECTION 3: AVAILABLE SEPARATELY TAB (From image_6db437.jpg)
   // ==========================================
   {
-    id: "spec-yoga",
-    category: "specialty",
-    title: "Yoga Standalone",
-    priceMonthly: 50,
-    priceYearly: 50,
-    caption: "Mobility & Breath Control Access",
-    badge: "Y",
-    gymdeskSlugMonthToMonth: "yoga-standalone",
-    gymdeskSlug12Month: "yoga-standalone",
-    features: [
-      "All structured Yoga sessions",
-      "Flexibility & Recovery focus",
-      "Great for active recovery days",
-      "No combat arts access included",
-      "Can bundle later for discount",
-    ],
-    footnote: ""
+    id: "sep-one",
+    category: "available-separately",
+    title: "One Service",
+    price: 50, // image_6db437.jpg
+    period: "/ mo",
+    caption: "Yoga, Striking or Cold Plunge & Sauna - your choice.",
+    gymdeskSlug: "one-service-standalone",
+    features: ["Access to exactly 1 premium standalone discipline", "Perfect track for targeted specialty training", "No contract - $35 cancellation fee applies"],
   },
   {
-    id: "spec-two-pack",
-    category: "specialty",
-    title: "Dual Standalone Pack",
-    priceMonthly: 85,
-    priceYearly: 85,
-    caption: "Pick Any Two Standalone Tiers",
-    badge: "D",
+    id: "sep-two",
+    category: "available-separately",
+    title: "Two Services",
+    price: 85, // image_6db437.jpg
+    period: "/ mo",
+    caption: "Pick any combination of two services (e.g. Yoga + Cold Plunge & Sauna)",
     isHighlighted: true,
-    gymdeskSlugMonthToMonth: "dual-standalone-pack",
-    gymdeskSlug12Month: "dual-standalone-pack",
-    features: [
-      "Combine Yoga + Striking together",
-      "Or pair with customized gym loops",
-      "Saves $15/mo over individual tracks",
-      "Perfect for cross-training setup",
-      "Includes functional fitness space",
-    ],
-    footnote: ""
+    gymdeskSlug: "two-services-standalone",
+    features: ["Combine any 2 non-BJJ options together", "Saves monthly cash over individual setups", "No contract - $35 cancellation fee applies"],
   },
   {
-    id: "spec-striking",
-    category: "specialty",
-    title: "Striking Standalone",
-    priceMonthly: 50,
-    priceYearly: 50,
-    caption: "Stand-Up & Boxing Mechanics",
-    badge: "ST",
-    gymdeskSlugMonthToMonth: "striking-standalone",
-    gymdeskSlug12Month: "striking-standalone",
-    features: [
-      "All Boxing/Striking curriculum",
-      "Heavy bag & padwork drills",
-      "High cardio conditioning focus",
-      "No grappling or mat space access",
-      "Month-to-month flexibility setup",
-    ],
-    footnote: ""
-  },
-  {
-    id: "spec-three-pack",
-    category: "specialty",
-    title: "Triple Standalone Pack",
-    priceMonthly: 120,
-    priceYearly: 120,
-    caption: "All Non-BJJ Specialty Services",
-    badge: "T",
-    gymdeskSlugMonthToMonth: "triple-standalone-pack",
-    gymdeskSlug12Month: "triple-standalone-pack",
-    features: [
-      "Full Access: Striking + Yoga + Fitness",
-      "Complete functional gym floor access",
-      "Saves $30/mo over base pricing",
-      "Sauna & Recovery space included",
-      "BJJ training is excluded",
-    ],
-    footnote: ""
+    id: "sep-three",
+    category: "available-separately",
+    title: "All Three",
+    price: 120, // image_6db437.jpg
+    period: "/ mo",
+    caption: "Unlock all three non-BJJ services completely.",
+    gymdeskSlug: "triple-standalone-pack",
+    features: ["Full access to Yoga + Striking + Recovery floor", "Or upgrade to 'All-In' to get BJJ + Fitness too!", "No contract - $35 cancellation fee applies"],
   },
 
   // ==========================================
-  // 4. PASSES & TRIAL PACKAGES
+  // SECTION 4: KIDS MEMBERSHIP TAB (From image_6db437.jpg & image_6d3ee3.png)
   // ==========================================
   {
-    id: "pass-dropin",
-    category: "passes",
-    title: "Mat Drop-In Pass",
-    priceMonthly: 20,
-    priceYearly: 20,
-    caption: "Single Session Access",
-    badge: "1P",
-    gymdeskSlugMonthToMonth: "mat-drop-in-pass",
-    gymdeskSlug12Month: "mat-drop-in-pass",
-    features: [
-      "Valid for any single scheduled class",
-      "Perfect for traveling practitioners",
-      "Open mat or guided class entry",
-      "Requires signed safety waiver",
-      "Rental gis available at front desk",
-    ],
-    footnote: ""
+    id: "kids-18m",
+    category: "kids-membership",
+    title: "Kids 18 Months Track",
+    price: 80, // image_6db437.jpg
+    period: "/ mo",
+    caption: "BJJ + Fitness - $20 less at every contract rate",
+    gymdeskSlug: "kids-18-month",
+    features: ["Unlimited Youth BJJ Classes", "Coordination & athletic drilling blocks", "Lowest locked-in children rate option"],
   },
   {
-    id: "pass-trial",
-    category: "passes",
-    title: "2-Week All-Access Trial",
-    priceMonthly: 59,
-    priceYearly: 59,
-    caption: "Test Drive the Entire Academy",
-    badge: "TR",
+    id: "kids-12m",
+    category: "kids-membership",
+    title: "Kids 12 Months Track",
+    price: 90, // image_6db437.jpg
+    period: "/ mo",
+    caption: "BJJ + Fitness - $20 less at every contract rate",
+    gymdeskSlug: "youth-foundations-12-month",
+    features: ["Unlimited Youth BJJ Classes", "Coordination & athletic drilling blocks", "Standard annual youth developmental tracker"],
+  },
+  {
+    id: "kids-6m",
+    category: "kids-membership",
+    title: "Kids 6 Months Track",
+    price: 100, // image_6db437.jpg
+    period: "/ mo",
+    caption: "BJJ + Fitness - $20 less at every contract rate",
+    gymdeskSlug: "kids-6-month",
+    features: ["Unlimited Youth BJJ Classes", "Coordination & athletic drilling blocks", "Balanced seasonal activity timeline"],
+  },
+  {
+    id: "kids-3m",
+    category: "kids-membership",
+    title: "Kids 3 Months Track",
+    price: 110, // image_6db437.jpg
+    period: "/ mo",
+    caption: "BJJ + Fitness - $20 less at every contract rate",
+    gymdeskSlug: "kids-3-month",
+    features: ["Unlimited Youth BJJ Classes", "Coordination & athletic drilling blocks", "Short structural tracking block"],
+  },
+  {
+    id: "kids-1m",
+    category: "kids-membership",
+    title: "(K.5) Kids 1 Month Track (M2M)",
+    price: 120, // image_6d3ee3.png
+    period: "/ mo",
+    caption: "1 month • Unlimited BJJ Kids, Strength & Conditioning, Striking",
+    gymdeskSlug: "youth-foundations-month-to-month",
+    features: ["Unlimited Youth BJJ Classes", "Coordination & athletic drilling blocks", "Cancel anytime rolling program flexibility"],
+  },
+  {
+    id: "kids-yearly-pif",
+    category: "kids-membership",
+    title: "(K.6) Kids Whole Year (Paid In Full)",
+    price: 865, // image_6d3ee3.png
+    period: "/ yr",
+    caption: "1 year • Unlimited BJJ Kids, Strength & Conditioning, Striking",
+    gymdeskSlug: "youth-yearly-paid-in-full",
+    features: ["Annual upfront tracking metrics", "Saves significantly over rolling monthly cycles", "Structured annual skill progression"],
+  },
+
+  // ==========================================
+  // LOWER SUB SECTION: TRIALS & SHORT TERM (From image_6d4e82.png)
+  // ==========================================
+  {
+    id: "trial-adult-2w",
+    category: "trials-short-term",
+    title: "(2a) Adult 2 Week Trial",
+    price: 59, // image_6d4e82.png
+    period: "/ 2 weeks",
+    caption: "2 weeks • Unlimited Access",
     isHighlighted: true,
-    gymdeskSlugMonthToMonth: "two-week-trial",
-    gymdeskSlug12Month: "two-week-trial",
-    features: [
-      "14 consecutive days of access",
-      "Try BJJ, Striking, & Yoga tiers",
-      "Free uniform rental included",
-      "No signup fee if upgraded during trial",
-      "Available for local residents only",
-    ],
-    footnote: ""
+    gymdeskSlug: "adult-2-week-trial",
+    features: ["Brazilian Jiu Jitsu", "Strength & Conditioning", "Striking classes included"],
   },
   {
-    id: "pass-punch-5",
-    category: "passes",
-    title: "5-Class Punch Card",
-    priceMonthly: 90,
-    priceYearly: 90,
-    caption: "Flexible Casual Punch Pass",
-    badge: "5P",
-    gymdeskSlugMonthToMonth: "5-class-punch-card",
-    gymdeskSlug12Month: "5-class-punch-card",
-    features: [
-      "5 class credits loaded to profile",
-      "Credits expire after 90 days",
-      "Shareable with immediate family",
-      "Valid for all academy programs",
-      "No monthly recurring charges",
-    ],
-    footnote: ""
+    id: "trial-kids-2w",
+    category: "trials-short-term",
+    title: "(2b) Kids 2 Week Trial",
+    price: 59, // image_6d4e82.png
+    period: "/ 2 weeks",
+    caption: "2 weeks • Unlimited Access",
+    gymdeskSlug: "kids-2-week-trial",
+    features: ["Brazilian Jiu Jitsu Kids", "Strength & Conditioning", "Striking developmental loops"],
+  },
+
+  // ==========================================
+  // LOWER SUB SECTION: DROP-IN PASSES (From image_6d4e82.png)
+  // ==========================================
+  {
+    id: "dropin-striking",
+    category: "drop-in-passes",
+    title: "(1a) Striking Drop In",
+    price: 20, // image_6d4e82.png
+    period: "/ day",
+    caption: "1 day • Unlimited Striking",
+    gymdeskSlug: "striking-drop-in",
+    features: ["Valid for 1 full day", "Access to scheduled Striking sessions", "Gym floor mat privileges"],
   },
   {
-    id: "pass-punch-10",
-    category: "passes",
-    title: "10-Class Punch Card",
-    priceMonthly: 170,
-    priceYearly: 170,
-    caption: "Bulk Session Savings Pack",
-    badge: "10",
-    gymdeskSlugMonthToMonth: "10-class-punch-card",
-    gymdeskSlug12Month: "10-class-punch-card",
-    features: [
-      "10 class credits loaded to profile",
-      "Saves $30 over raw drop-in rates",
-      "Credits expire after 180 days",
-      "Valid for all academy programs",
-      "Ideal for irregular work schedules",
-    ],
-    footnote: ""
-  },
-  {
-    id: "pass-punch-20",
-    category: "passes",
-    title: "20-Class Punch Card",
-    priceMonthly: 320,
-    priceYearly: 320,
-    caption: "Ultimate Schedule Flexibility",
-    badge: "20",
-    gymdeskSlugMonthToMonth: "20-class-punch-card",
-    gymdeskSlug12Month: "20-class-punch-card",
-    features: [
-      "20 class credits loaded to profile",
-      "Saves $80 over individual pass rates",
-      "Credits expire 1 full year from buy",
-      "Fully trackable on member mobile app",
-      "No contracts or commitments",
-    ],
-    footnote: ""
+    id: "dropin-bjj",
+    category: "drop-in-passes",
+    title: "(1a) Jiu Jitsu Drop In",
+    price: 20, // image_6d4e82.png
+    period: "/ day",
+    caption: "1 day • Unlimited Grappling",
+    gymdeskSlug: "jiu-jitsu-drop-in",
+    features: ["Valid for 1 full day", "Brazilian Jiu Jitsu & Brazilian Jiu Jitsu Kids mats", "Open mat or regular group attendance"],
   }
 ];
-
 export const testimonials = [
   {
     id: "0",
@@ -443,6 +435,8 @@ export const testimonials = [
       "The efficiency boost is undeniable. This platform has transformed our workflow, forever.",
   },
 ];
+
+
 
 export const logos = [
   {
