@@ -3,38 +3,43 @@ import React, { useRef, useState } from "react";
 const coachesData = [
   {
     id: 1,
-    name: "Ffion Davies",
-    role: "Head Coach",
-    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=600&auto=format&fit=crop", 
-    bio: "World ADCC & CJI Champion - whether gi or no-gi, Ffion is unequivocally one of the best grapplers in the world. She brings an unrivaled skillset to Lewisburg BJJ, helping to develop students at all levels from introductory foundations to elite competitive structures.",
+    name: "Ben Schneider",
+    role: "Head Strength & conditioning Coach",
+    image: "/images/coach1.jpg", 
+    // Generic bio tailored to functional fitness, combat athletic preparation, and longevity
+    bio: "Specializes in developing sport-specific endurance, explosive power, and injury-prevention protocols. Ben designs tailored structural longevity tracks to ensure athletes and hobbyists alike optimize their physical performance both on and off the mats.",
   },
   {
     id: 2,
-    name: "Sam Gibson",
-    role: "Head Gi Coach",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=600&auto=format&fit=crop",
-    bio: "Deeply technical instructor specializing in traditional Gi mechanics, absolute framing systems, and dynamic submission chains. Dedicated to crafting structured progress paths for practitioners of all body types.",
+    name: "John Rohrbach",
+    role: "Head BJJ Coach",
+    image: "/images/coach2.jpg",
+    // Generic bio tailored to foundational mechanics, technical mastery, and structural progress
+    bio: "Dedicated to teaching the foundational mechanics, pressure passing systems, and high-efficiency submissions of Brazilian Jiu-Jitsu. John focuses on a structured curriculum that makes technical grappling accessible and effective for all body types and skill levels.",
   },
   {
     id: 3,
-    name: "Stuart Cooper",
-    role: "No-Gi Coach",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop",
-    bio: "Renowned black belt instructor with vast international competitive experience. Stuart targets hyper-efficient leg locks, precision guard passing systems, and high-intensity structural positioning loops.",
+    name: "Nick Cashdollar",
+    role: "MMA Coach",
+    image: "/images/coach3.jpg",
+    // Generic bio tailored to distance management, striking integration, and cage transitions
+    bio: "Combines striking, wrestling, and ground transitions into a fluid, cohesive martial arts system. Nick focuses on precision distance management, heavy padwork conditioning, and strategic ring control for both self-defense and competitive arenas.",
   },
   {
     id: 4,
-    name: "Coach Four",
-    role: "Striking Coach",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop",
-    bio: "Specializing in fundamental stand-up mechanics, structural balance, and heavy bag/padwork conditioning to seamlessly supplement combat arts mobility tracks.",
+    name: "Alison Busch",
+    role: "Yoga Instructor",
+    image: "/images/coach4.jpg",
+    // Generic bio tailored to mobility, flexibility recovery, and breath-work for athletes
+    bio: "Focuses on deep structural mobility, athletic recovery sequences, and core stabilization metrics. Alison's classes are explicitly designed to counteract muscle tightness, restore joint alignment, and enhance functional flexibility for high-impact athletes.",
   },
   {
     id: 5,
-    name: "Coach Five",
-    role: "Youth Program Director",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop",
-    bio: "Focused on building life skills, team safety structures, and introductory coordination drilling metrics across our youth training architectures.",
+    name: "Hadassah Lehman",
+    role: "Woman's Coach",
+    image: "/images/coach5.jpg",
+    // Generic bio tailored to empowering community, technical leverage, and welcoming frameworks
+    bio: "Committed to fostering an empowering, supportive, and technical environment for women in martial arts. Hadassah emphasizes leverage-based self-defense strategies, high-intensity drilling loops, and building confidence through structured skill development.",
   },
 ];
 
@@ -64,10 +69,7 @@ const Coaches = () => {
         {/* HEADER BLOCK */}
         <div className="flex flex-col items-center justify-center text-center mb-14 space-y-4">
           
-          {/* 🥋 UPPER TAGLINE
-              - Changed phone screens from text-5xl down to text-xl
-              - Changed desktop screens up to text-3xl for optimal balance
-          */}
+          {/* 🥋 UPPER TAGLINE */}
           <span 
             className="text-xl md:text-2xl uppercase font-medium text-white block"
             style={{ 

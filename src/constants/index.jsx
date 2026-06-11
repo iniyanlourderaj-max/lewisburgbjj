@@ -385,54 +385,46 @@ export const plans = [
     features: ["Valid for 1 full day", "Brazilian Jiu Jitsu & Brazilian Jiu Jitsu Kids mats", "Open mat or regular group attendance"],
   }
 ];
+
+
 export const testimonials = [
   {
-    id: "0",
-    name: "Jessica Saunders",
-    role: "Globalnomads",
-    avatarUrl: "/images/testimonials/jessica-saunders.png",
-    comment:
-      "Xora's customer support is second to none! They’re like my tech superheroes, always there when I need them.",
-  },
-  {
     id: "1",
-    name: "Mark Erixon",
-    role: "Vid capital intl",
-    avatarUrl: "/images/testimonials/mark-erixon.png",
+    name: "Cade V",
+   
     comment:
-      "I was skeptical at first, but now I can't imagine our content operations without it. It's that impactful.",
+      "Best Jiu jitsu gym I've ever been to. All the instructors go into great detail on technique during training. Love the environment!",
   },
   {
     id: "2",
-    name: "Melanie Hurst",
-    role: "Cyberleap",
-    avatarUrl: "/images/testimonials/melanie-hurst.png",
+    name: "Hadassah Leaman",
+
     comment:
-      "Adopting this software was a breeze. It's made everyday tasks so much simpler.",
+      "It's a very friendly atmosphere! Especially as a girl it can be intimidating to start jiu jitsu but I couldn't be more happy I found this place. John is a great teacher and has a very balanced teaching style, covering the basics and providing more for those who are more advanced or want to learn more.",
   },
   {
     id: "3",
-    name: "Alicia Barker",
-    role: "Cyberleap",
-    avatarUrl: "/images/testimonials/alicia-barker.png",
+    name: "Justin Craven",
     comment:
-      "The analytics feature is like having a personal fortune teller. It's been instrumental in guiding our business decisions.",
+      "I have to start off by saying, I was not expecting to be as interested in learning Jiu-Jitsu as I am now. We have been coming here as a family for half a year now and it's awesome. Jon has a great way of teaching that is intriguing and highly effective.",
   },
   {
     id: "4",
-    name: "Becky Snider",
-    role: "Floclips",
-    avatarUrl: "/images/testimonials/becky-snider.png",
+    name: "Nathan Will",
     comment:
-      "Switched to Xora last month, and I'm already seeing results. Best decision for our team!",
+      "All around amazing atmosphere, jiu-jitsu John is a top tier coach, well rounded in traditional and modern techniques. On top of everything the facility offers cold plunge, sauna, breath work, and many different physical workouts to benefit your training.",
   },
   {
     id: "5",
-    name: "Jim Bradley",
-    role: "Vid capital intl",
-    avatarUrl: "/images/testimonials/jim-bradley.png",
+    name: "Jennifer Cresswell",
     comment:
-      "The efficiency boost is undeniable. This platform has transformed our workflow, forever.",
+      "John has a fun and laid back approach to teaching. Whether you were looking for self-defense, a great workout, or a new hobby I highly recommend you give this place a try. You also have everything needed to succeed by having in gym access to functional fitness, ice plunges, and saunas.",
+  },
+  {
+    id: "6",
+    name: "Kim Kiefer",
+    comment:
+      "My daughter attends jitsu and she loves it here. Very positive, clean environment. Coach John is great with the kids, I highly recommend coming here! :)",
   },
 ];
 
