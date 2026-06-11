@@ -106,10 +106,10 @@ const Coaches = () => {
         </div>
 
         {/* Swipeable & Slidable Horizontal Scroll-Track Container */}
-        {/* ⚡ FIX: Swapped touch-pan-x to touch-pan-y to native page scrolls are completely fluid */}
+        {/* ⚡ TRACK FIX: Changed container to 'overflow-x-scroll' and used browser automatic 'touch-auto' parsing */}
         <div
           ref={scrollContainerRef}
-          className="flex space-x-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-8 touch-pan-y"
+          className="flex space-x-6 overflow-x-scroll scrollbar-hide snap-x snap-mandatory pb-8 touch-auto"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {coachesData.map((coach) => {
@@ -118,8 +118,8 @@ const Coaches = () => {
             return (
               <div
                 key={coach.id}
-                /* ⚡ FIX: Added touch-pan-y to each element card frame block */
-                className="relative flex-none w-[85vw] sm:w-[45vw] md:w-[30vw] lg:w-[26vw] aspect-[3/4] rounded-3xl overflow-hidden group snap-start bg-zinc-950 border border-zinc-900 shadow-xl touch-pan-y"
+                /* ⚡ SLIDE FIX: Changed to 'touch-pan-x' on individual card modules so horizontal swipe gestures register perfectly */
+                className="relative flex-none w-[85vw] sm:w-[45vw] md:w-[30vw] lg:w-[26vw] aspect-[3/4] rounded-3xl overflow-hidden group snap-start bg-zinc-950 border border-zinc-900 shadow-xl touch-pan-x"
               >
                 {/* Core Visual Underlay Frame */}
                 <img
