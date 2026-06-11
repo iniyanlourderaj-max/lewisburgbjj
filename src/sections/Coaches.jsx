@@ -6,7 +6,6 @@ const coachesData = [
     name: "Ben Schneider",
     role: "Head Strength & conditioning Coach",
     image: "/images/coach1.jpg", 
-    // Generic bio tailored to functional fitness, combat athletic preparation, and longevity
     bio: "Specializes in developing sport-specific endurance, explosive power, and injury-prevention protocols. Ben designs tailored structural longevity tracks to ensure athletes and hobbyists alike optimize their physical performance both on and off the mats.",
   },
   {
@@ -14,7 +13,6 @@ const coachesData = [
     name: "John Rohrbach",
     role: "Head BJJ Coach",
     image: "/images/coach2.jpg",
-    // Generic bio tailored to foundational mechanics, technical mastery, and structural progress
     bio: "Dedicated to teaching the foundational mechanics, pressure passing systems, and high-efficiency submissions of Brazilian Jiu-Jitsu. John focuses on a structured curriculum that makes technical grappling accessible and effective for all body types and skill levels.",
   },
   {
@@ -22,7 +20,6 @@ const coachesData = [
     name: "Nick Cashdollar",
     role: "MMA Coach",
     image: "/images/coach3.jpg",
-    // Generic bio tailored to distance management, striking integration, and cage transitions
     bio: "Combines striking, wrestling, and ground transitions into a fluid, cohesive martial arts system. Nick focuses on precision distance management, heavy padwork conditioning, and strategic ring control for both self-defense and competitive arenas.",
   },
   {
@@ -30,7 +27,6 @@ const coachesData = [
     name: "Alison Busch",
     role: "Yoga Instructor",
     image: "/images/coach4.jpg",
-    // Generic bio tailored to mobility, flexibility recovery, and breath-work for athletes
     bio: "Focuses on deep structural mobility, athletic recovery sequences, and core stabilization metrics. Alison's classes are explicitly designed to counteract muscle tightness, restore joint alignment, and enhance functional flexibility for high-impact athletes.",
   },
   {
@@ -38,7 +34,6 @@ const coachesData = [
     name: "Hadassah Lehman",
     role: "Woman's Coach",
     image: "/images/coach5.jpg",
-    // Generic bio tailored to empowering community, technical leverage, and welcoming frameworks
     bio: "Committed to fostering an empowering, supportive, and technical environment for women in martial arts. Hadassah emphasizes leverage-based self-defense strategies, high-intensity drilling loops, and building confidence through structured skill development.",
   },
 ];
@@ -111,9 +106,10 @@ const Coaches = () => {
         </div>
 
         {/* Swipeable & Slidable Horizontal Scroll-Track Container */}
+        {/* ⚡ FIX: Swapped touch-pan-x to touch-pan-y to native page scrolls are completely fluid */}
         <div
           ref={scrollContainerRef}
-          className="flex space-x-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-8 touch-pan-x"
+          className="flex space-x-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-8 touch-pan-y"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {coachesData.map((coach) => {
@@ -122,7 +118,8 @@ const Coaches = () => {
             return (
               <div
                 key={coach.id}
-                className="relative flex-none w-[85vw] sm:w-[45vw] md:w-[30vw] lg:w-[26vw] aspect-[3/4] rounded-3xl overflow-hidden group snap-start bg-zinc-950 border border-zinc-900 shadow-xl"
+                /* ⚡ FIX: Added touch-pan-y to each element card frame block */
+                className="relative flex-none w-[85vw] sm:w-[45vw] md:w-[30vw] lg:w-[26vw] aspect-[3/4] rounded-3xl overflow-hidden group snap-start bg-zinc-950 border border-zinc-900 shadow-xl touch-pan-y"
               >
                 {/* Core Visual Underlay Frame */}
                 <img

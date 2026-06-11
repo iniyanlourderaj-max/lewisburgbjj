@@ -9,10 +9,9 @@ const slideshowImages1 = [
   "/images/lbjj_4k_4.png"
 ];
 
-// Second card slideshow assets verified via image_499a9a.png
+// Second card slideshow assets
 const slideshowImages2 = [
-  "/images/lbjj_4k_2.png",
-
+  "/images/lbjj_4k_2.png"
 ];
 
 const Features = () => {
@@ -21,12 +20,10 @@ const Features = () => {
 
   // Independent auto-advance loops
   useEffect(() => {
-    // Timer 1: First feature block slides
     const interval1 = setInterval(() => {
       setCurrentSlideIndex1((prev) => (prev + 1) % slideshowImages1.length);
     }, 4000);
     
-    // Timer 2: Second feature block slides
     const interval2 = setInterval(() => {
       setCurrentSlideIndex2((prev) => (prev + 1) % slideshowImages2.length);
     }, 4000);
@@ -55,11 +52,19 @@ const Features = () => {
                   {caption}
                 </p>
                 
-                <h2 className="max-w-400 mb-5 text-2xl md:text-3xl font-black text-white uppercase tracking-tight leading-none">
+                {/* 🎨 Changed main card titles to off-white (#EAE6DF) */}
+                <h2 
+                  className="max-w-400 mb-5 text-2xl md:text-3xl font-black uppercase tracking-tight leading-none"
+                  style={{ color: "#EAE6DF" }}
+                >
                   {title}
                 </h2>
                 
-                <p className="mb-6 text-zinc-300/90 text-base font-light leading-relaxed max-md:text-sm">
+                {/* 🎨 Changed card body descriptions to clear off-white (#EAE6DF) with comfortable readability masking */}
+                <p 
+                  className="mb-6 text-base font-light leading-relaxed max-md:text-sm opacity-90"
+                  style={{ color: "#EAE6DF" }}
+                >
                   {text}
                 </p>
 
@@ -67,7 +72,7 @@ const Features = () => {
                 {image && (
                   <div className="relative mb-4 overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950/30 aspect-[16/10] w-full">
                     
-                    {/* 🎬 SLIDESHOW 1: Renders on the first feature card layout */}
+                    {/* 🎬 SLIDESHOW 1 */}
                     {index === 0 && (
                       slideshowImages1.map((slideSrc, slideIndex) => (
                         <img
@@ -81,7 +86,7 @@ const Features = () => {
                       ))
                     )}
 
-                    {/* 🎬 SLIDESHOW 2: Renders on the second feature card layout */}
+                    {/* 🎬 SLIDESHOW 2 */}
                     {index === 1 && (
                       slideshowImages2.map((slideSrc, slideIndex) => (
                         <img
@@ -95,7 +100,7 @@ const Features = () => {
                       ))
                     )}
 
-                    {/* 🖼️ STATIC FALLBACK: Renders default image layout logic for all remaining features */}
+                    {/* 🖼️ STATIC FALLBACK */}
                     {index !== 0 && index !== 1 && (
                       <img 
                         src={image} 
@@ -120,11 +125,10 @@ const Features = () => {
                   key={id} 
                   className="relative py-3 px-3 flex flex-col items-center justify-center text-center w-full md:py-6 md:flex-1"
                 >
+                  {/* ⚡ THE FIX: Swapped out 'Bad Brush Custom' for 'Oswald' and forced clean off-white (#EAE6DF) typography layout parameters */}
                   <h3 
-                    className="relative z-2 max-w-64 mx-auto my-0 text-zinc-100 text-sm sm:text-base lg:text-lg font-normal tracking-normal uppercase text-center leading-tight select-none"
-                    style={{ 
-                      fontFamily: "'Bad Brush Custom', sans-serif"
-                    }}
+                    className="font-oswald relative z-2 max-w-64 mx-auto my-0 text-sm sm:text-base lg:text-lg font-bold tracking-wide uppercase text-center leading-tight select-none"
+                    style={{ color: "#EAE6DF" }}
                   >
                     {title}
                   </h3>
