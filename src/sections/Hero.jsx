@@ -3,7 +3,11 @@ import { Element, Link as LinkScroll } from "react-scroll";
 
 const Hero = () => {
   return (
-    <section className="relative h-screen min-h-[600px] flex items-center bg-zinc-950 overflow-hidden">
+    /* 
+      ⚡ THE FIX: Added 'pt-24 md:pt-32' to ensure your large "Brazilian Jiu Jitsu" title
+      clears the taller fixed navigation bar perfectly across all devices.
+    */
+    <section className="relative min-h-screen flex items-center bg-zinc-950 overflow-hidden pt-24 md:pt-32 pb-16">
       
       {/* 📸 FULL BLEED BACKGROUND IMAGE LAYER */}
       <div className="absolute inset-0 z-0">
@@ -18,8 +22,7 @@ const Hero = () => {
       <Element name="hero" className="relative z-10 w-full px-5">
         <div className="max-w-4xl mx-auto flex flex-col items-center justify-center text-center">
           
-        
-          {/* 🎨 MAIN HEADLINE (Bad Brush Custom) - MADE LARGER */}
+          {/* 🎨 MAIN HEADLINE (Bad Brush Custom) - NOW SAFE FROM NAV COVERAGE */}
           <h1 
             className="text-white uppercase text-7xl sm:text-8xl md:text-8xl lg:text-9xl font-normal tracking-normal leading-[1.05] md:leading-[1.0] mb-5 md:mb-6 select-none"
             style={{ 
@@ -48,7 +51,7 @@ const Hero = () => {
           </p>
           
           {/* ⚡ THE ACTION BUTTON */}
-          <LinkScroll to="pricing" offset={-55} spy smooth>
+          <LinkScroll to="pricing" offset={-75} spy smooth>
             <button 
               className="bg-[#E9E151] hover:bg-[#d6ce43] text-black text-xs md:text-sm font-bold uppercase tracking-wider py-3.5 px-10 md:py-4 md:px-12 transition-all duration-200 transform active:scale-95 shadow-xl cursor-pointer"
               style={{ fontFamily: "'Oswald', sans-serif" }}
