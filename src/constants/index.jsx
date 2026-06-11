@@ -313,7 +313,7 @@ export const plans = [
   {
     id: "kids-1m",
     category: "kids-membership",
-    title: "(K.5) Kids 1 Month Track (M2M)",
+    title: "Kids 1 Month Track",
     price: 120, // image_6d3ee3.png
     period: "/ mo",
     caption: "1 month • Unlimited BJJ Kids, Strength & Conditioning, Striking",
@@ -323,7 +323,7 @@ export const plans = [
   {
     id: "kids-yearly-pif",
     category: "kids-membership",
-    title: "(K.6) Kids Whole Year (Paid In Full)",
+    title: "Kids Whole Year",
     price: 865, // image_6d3ee3.png
     period: "/ yr",
     caption: "1 year • Unlimited BJJ Kids, Strength & Conditioning, Striking",
@@ -337,7 +337,7 @@ export const plans = [
   {
     id: "trial-adult-2w",
     category: "trials-short-term",
-    title: "(2a) Adult 2 Week Trial",
+    title: "Adult 2 Week Trial",
     price: 59, // image_6d4e82.png
     period: "/ 2 weeks",
     caption: "2 weeks • Unlimited Access",
@@ -348,7 +348,7 @@ export const plans = [
   {
     id: "trial-kids-2w",
     category: "trials-short-term",
-    title: "(2b) Kids 2 Week Trial",
+    title: "kids 2 Week Trial",
     price: 59, // image_6d4e82.png
     period: "/ 2 weeks",
     caption: "2 weeks • Unlimited Access",
@@ -362,7 +362,7 @@ export const plans = [
   {
     id: "dropin-striking",
     category: "drop-in-passes",
-    title: "(1a) Striking Drop In",
+    title: "Striking Drop In",
     price: 20, // image_6d4e82.png
     period: "/ day",
     caption: "1 day • Unlimited Striking",
@@ -372,7 +372,7 @@ export const plans = [
   {
     id: "dropin-bjj",
     category: "drop-in-passes",
-    title: "(1a) Jiu Jitsu Drop In",
+    title: "Jiu Jitsu Drop In",
     price: 20, // image_6d4e82.png
     period: "/ day",
     caption: "1 day • Unlimited Grappling",

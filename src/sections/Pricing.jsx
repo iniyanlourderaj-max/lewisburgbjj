@@ -5,23 +5,28 @@ import CountUp from "react-countup";
 import { plans } from "../constants/index.jsx";
 
 const Pricing = () => {
-  // 1. Defaults to All-In membership view per request
+  // Defaults to All-In membership view per request
   const [activeCategory, setActiveCategory] = useState("all-in-membership");
 
-  // Top level heavy core configuration types (Reordered & Added Women's Only)
+  // Top level heavy core configuration types (Cleaned up emojis)
   const coreSections = [
     { id: "all-in-membership", label: "All-In Membership" },
-    { id: "base-membership", label: " Base Membership" },
-    { id: "available-separately", label: " Available Separately" },
-    { id: "kids-membership", label: " Kids Membership" },
-    { id: "womens-only-membership", label: " Women's Only" }, // Added right next to Kids
+    { id: "base-membership", label: "Base Membership" },
+    { id: "available-separately", label: "Available Separately" },
+    { id: "kids-membership", label: "Kids Membership" },
+    { id: "womens-only-membership", label: "Women's Only" },
   ];
 
-  // Secondary sub-level smaller tracking buttons
+  // Secondary sub-level smaller tracking buttons (Cleaned up emojis)
   const minorSections = [
-    { id: "trials-short-term", label: " Trials (2 Weeks)" },
+    { id: "trials-short-term", label: "Trials (2 Weeks)" },
     { id: "drop-in-passes", label: "Drop-In Passes" },
   ];
+
+  // Map and clean up local mock arrays or imported global constants dynamic values
+  const sanitizePlanTitle = (title) => {
+    return title.replace(/\s*\(\d+[A-Z]\)\s*/g, " ").trim();
+  };
 
   // Hardcoded mockup filter for Women's Only BJJ since it is its own tab now
   const filteredPlans = activeCategory === "womens-only-membership" 
@@ -33,14 +38,23 @@ const Pricing = () => {
           price: 35,
           period: "/ MO",
           features: ["Access to Women's only BJJ", "Dedicated coaching", "Community events"],
-          gymdeskSlug: "womens-only", // Ensure this matches your Gymdesk slug backend identifier
+          gymdeskSlug: "womens-only",
           isHighlighted: true
         }
       ]
-    : plans.filter((plan) => plan.category === activeCategory);
+    : plans
+        .filter((plan) => plan.category === activeCategory)
+        .map((plan) => ({
+          ...plan,
+          title: sanitizePlanTitle(plan.title)
+        }));
 
-  // 9. Flag to hide the Family Discount bar on standalone, trial, and casual tiers
-  const showFamilyDiscount = !["available-separately", "trials-short-term", "drop-in-passes"].includes(activeCategory);
+  const showFamilyDiscount = ![
+    "available-separately", 
+    "trials-short-term", 
+    "drop-in-passes",
+    "womens-only-membership"
+  ].includes(activeCategory);
 
   return (
     /* 🎨 BACKDROP: Original dark charcoal background retained */
@@ -50,14 +64,12 @@ const Pricing = () => {
           
           {/* Header titles layout block */}
           <div className="text-center mb-12">
-            {/* ⚡ OFF-WHITE TEXT */}
             <h3 
               className="text-white uppercase font-bold text-4xl sm:text-5xl md:text-4xl lg:text-5xl tracking-tighter mb-4 mt-2" 
               style={{ color: "#EAE6DF" }}
             >
               Membership Menu
             </h3>
-            {/* ⚡ OFF-WHITE TEXT (Muted variation for description) */}
             <p 
               className="text-sm md:text-base max-w-xl mx-auto font-light"
               style={{ color: "rgba(234, 230, 223, 0.75)" }}
@@ -69,7 +81,7 @@ const Pricing = () => {
           {/* TAB WRAPPER DECK CONTAINER */}
           <div className="flex flex-col items-center gap-4 mb-16 border-b border-zinc-900/60 pb-8 max-w-5xl mx-auto">
             
-            {/* 1. PRIMARY CORE MEMBERSHIP HEADING TABS */}
+            {/* PRIMARY CORE MEMBERSHIP HEADING TABS */}
             <div className="flex flex-wrap justify-center gap-3 w-full">
               {coreSections.map((tab) => (
                 <div 
@@ -85,15 +97,18 @@ const Pricing = () => {
                     </div>
                   )}
 
+                  {/* 
+                    ⚡ THE FIX: Replaced custom bright yellow with your signature gold hex style (#D4AF37) 
+                    matching the benchmark reference captured in image_0ef1ff.png.
+                  */}
                   <button
                     onClick={() => setActiveCategory(tab.id)}
                     className={clsx(
-                      "w-full h-full px-4 py-3.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-300 border cursor-pointer justify-center text-center relative",
+                      "w-full h-full px-4 py-3.5 rounded-xl text-xs font-black uppercase tracking-wider border cursor-pointer justify-center text-center relative transition-all duration-300 transform active:scale-95 shadow-md",
                       activeCategory === tab.id
-                        ? "bg-[#D4AF37] text-zinc-950 border-[#D4AF37] shadow-lg scale-102"
-                        : "bg-zinc-950 border-zinc-900 hover:bg-zinc-900 transition-colors"
+                        ? "bg-[#D4AF37] text-black border-[#D4AF37] hover:bg-white hover:border-white shadow-lg scale-102"
+                        : "bg-[#D4AF37] text-black border-[#D4AF37] hover:bg-white hover:border-white"
                     )}
-                    style={activeCategory !== tab.id ? { color: "#EAE6DF" } : {}}
                   >
                     {tab.label}
                   </button>
@@ -101,19 +116,21 @@ const Pricing = () => {
               ))}
             </div>
 
-            {/* 2. SMALLER PASSTHROUGH TRIALS AND DROP-IN BUTTON HEADINGS */}
+            {/* SMALLER PASSTHROUGH TRIALS AND DROP-IN BUTTON HEADINGS */}
             <div className="flex flex-wrap justify-center gap-2 w-full max-w-xl mt-2">
               {minorSections.map((tab) => (
+                /* 
+                  ⚡ THE FIX: Updated lower filters to use the matching dark yellow scheme string.
+                */
                 <button
                   key={tab.id}
                   onClick={() => setActiveCategory(tab.id)}
                   className={clsx(
-                    "px-4 py-2 rounded-lg text-[11px] font-bold uppercase tracking-wide transition-all duration-300 border cursor-pointer",
+                    "px-4 py-2 rounded-lg text-[11px] font-black uppercase tracking-wide border cursor-pointer transition-all duration-300 transform active:scale-95 shadow-sm",
                     activeCategory === tab.id
-                      ? "bg-[#EAE6DF] text-zinc-950 border-[#EAE6DF] font-black shadow-md"
-                      : "bg-zinc-950/60 border-zinc-900/50 hover:text-white"
+                      ? "bg-[#D4AF37] text-black border-[#D4AF37] hover:bg-white hover:border-white shadow-md"
+                      : "bg-[#D4AF37] text-black border-[#D4AF37] hover:bg-white hover:border-white"
                   )}
-                  style={activeCategory !== tab.id ? { color: "rgba(234, 230, 223, 0.6)" } : {}}
                 >
                   {tab.label}
                 </button>
@@ -142,14 +159,13 @@ const Pricing = () => {
                   
                   {/* LEFT: Metadata Text Block */}
                   <div className="flex-1 text-center md:text-left relative z-10">
-                    {/* ⚡ OFF-WHITE TEXT (Plan Title) */}
                     <div 
                       className="text-lg md:text-xl font-black tracking-wider uppercase mb-1 font-poppins transition-colors duration-300"
                       style={{ color: "#EAE6DF" }}
                     >
                       {plan.title}
                     </div>
-                    {/* ⚡ OFF-WHITE TEXT (Plan Description Subtext) */}
+                    
                     <p 
                       className="text-xs md:text-sm font-normal leading-relaxed mb-4 max-w-xl font-sans"
                       style={{ color: "rgba(234, 230, 223, 0.7)" }}
@@ -188,17 +204,14 @@ const Pricing = () => {
 
                   {/* RIGHT: High Contrast Action Button Segment */}
                   <div className="w-full md:w-auto shrink-0 relative z-10">
+                    {/* 
+                      ⚡ THE FIX: Adjusted border color layout configuration keys to share the exact dark yellow palette tone.
+                    */}
                     <a
                       href={`https://lewisburg-bjj.gymdesk.com/signup?plan=${plan.gymdeskSlug}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={clsx(
-                        "block text-center w-full md:w-44 py-3.5 px-6 rounded-xl text-xs font-black uppercase tracking-[0.15em] border transition-all duration-300 cursor-pointer shadow-lg active:scale-98",
-                        plan.isHighlighted
-                          ? "bg-[#D4AF37] text-zinc-950 border-[#D4AF37] hover:bg-[#EAE6DF] hover:border-[#EAE6DF] hover:shadow-[0_10px_25px_rgba(212,175,55,0.25)]"
-                          : "bg-zinc-900 border-zinc-800 hover:bg-[#D4AF37] hover:text-black hover:border-[#D4AF37]"
-                      )}
-                      style={!plan.isHighlighted ? { color: "#EAE6DF" } : {}}
+                      className="block text-center w-full md:w-44 py-3.5 px-6 rounded-xl text-xs font-black uppercase tracking-[0.15em] border border-[#D4AF37] bg-[#D4AF37] text-black hover:bg-white hover:border-white hover:text-black transition-all duration-300 cursor-pointer shadow-lg transform active:scale-98"
                     >
                       Select Plan
                     </a>
@@ -213,32 +226,30 @@ const Pricing = () => {
             )}
           </div>
 
-          {/* Family Plan rules footnote framework layouts - Conditional display applied */}
+          {/* Family Plan rules footnote framework layouts */}
           {showFamilyDiscount && (
             <div className="mt-20 border border-zinc-900 bg-zinc-950 rounded-3xl p-8 max-w-4xl mx-auto shadow-xl relative overflow-hidden">
               <div className="absolute top-0 left-0 w-1.5 h-full bg-[#4A5A30]" />
-              <h4 className="text-lg font-black uppercase tracking-wider text-[#D4AF37] mb-2 text-center md:text-left font-poppins">
+              
+              <h4 className="font-oswald text-xl font-bold uppercase tracking-wider text-[#D4AF37] mb-3 text-center md:text-left select-none">
                 Family Discount 
               </h4>
-              {/* ⚡ OFF-WHITE TEXT (Footnote description) */}
+              
               <p 
-                className="text-sm mb-6 text-center md:text-left font-sans"
+                className="text-sm mb-6 text-center md:text-left font-sans font-light leading-relaxed"
                 style={{ color: "rgba(234, 230, 223, 0.75)" }}
               >
                 Dependents qualify for a 50% discount on their respective training tracks. Review the sample breakdown from the official documentation:
               </p>
-              {/* ⚡ OFF-WHITE TEXT (Code blocks / breakdowns) */}
-              <div 
-                className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono border-t border-zinc-900 pt-6"
-                style={{ color: "#EAE6DF" }}
-              >
-                <div className="flex justify-between bg-zinc-900/40 p-3 rounded-xl border border-zinc-900">
-                  <span style={{ color: "rgba(234, 230, 223, 0.8)" }}>Parent - All In, 18-month:</span>
-                  <span className="font-bold">$135 / mo</span>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-sans font-bold uppercase tracking-wide border-t border-zinc-900 pt-6">
+                <div className="flex justify-between items-center bg-zinc-900/40 p-4 rounded-xl border border-zinc-900">
+                  <span className="text-white">Parent - All In, 18-month:</span>
+                  <span className="text-[#D4AF37] text-sm">$135 / mo</span>
                 </div>
-                <div className="flex justify-between bg-zinc-900/40 p-3 rounded-xl border border-zinc-900">
-                  <span style={{ color: "rgba(234, 230, 223, 0.8)" }}>Each Child - 18-month:</span>
-                  <span className="text-[#D4AF37] font-bold">$40 / mo (50% of $80)</span>
+                <div className="flex justify-between items-center bg-zinc-900/40 p-4 rounded-xl border border-zinc-900">
+                  <span className="text-white">Each Child - 18-month:</span>
+                  <span className="text-[#D4AF37] text-sm">$40 / mo (50% of $80)</span>
                 </div>
               </div>
             </div>
