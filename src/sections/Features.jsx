@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Element } from "react-scroll";
-import { details, features } from "../constants/index.jsx";
+import { features } from "../constants/index.jsx";
 import Button from "../components/Button.jsx";
 
 // First card slideshow assets
@@ -12,6 +12,14 @@ const slideshowImages1 = [
 // Second card slideshow assets
 const slideshowImages2 = [
   "/images/lbjj_4k_2.png"
+];
+
+// 3. New hardcoded array ensuring your 4 exact required footer titles show up perfectly
+const customFooterDetails = [
+  { id: "footer-1", title: "Expert Instruction" },
+  { id: "footer-2", title: "Beginner Friendly Classes" },
+  { id: "footer-3", title: "Clean, Safe & Welcoming" },
+  { id: "footer-4", title: "Flexible and Affordable Plans" }
 ];
 
 const Features = () => {
@@ -44,33 +52,40 @@ const Features = () => {
           <div className="relative flex md:flex-wrap flex-nowrap border border-zinc-800/50 bg-zinc-900/95 backdrop-blur-md rounded-3xl md:overflow-hidden max-md:flex-col max-md:border-none max-md:rounded-none max-md:gap-4 shadow-[0_25px_60px_-15px_rgba(24,24,27,0.2)]">
             
             {features.map(({ id, caption, title, text, image, button }, index) => (
+              /* 
+                2. FIX: Added 'flex flex-col justify-between' so text stays up top 
+                and images line up perfectly on the exact same row baseline across desktop views.
+              */
               <div
                 key={id}
-                className="relative z-2 md:p-12 p-6 flex-50 border-r border-b border-zinc-800/40 last:border-r-0 max-md:bg-zinc-900/95 max-md:border max-md:border-zinc-800/40 max-md:rounded-2xl max-md:flex-320"
+                className="relative z-2 md:p-12 p-6 flex-50 flex flex-col justify-between border-r border-b border-zinc-800/40 last:border-r-0 max-md:bg-zinc-900/95 max-md:border max-md:border-zinc-800/40 max-md:rounded-2xl max-md:flex-320"
               >
-                <p className="caption text-[#8B9676] tracking-[0.15em] font-bold uppercase text-xs mb-3">
-                  {caption}
-                </p>
-                
-                {/* 🎨 Changed main card titles to off-white (#EAE6DF) */}
-                <h2 
-                  className="max-w-400 mb-5 text-2xl md:text-3xl font-black uppercase tracking-tight leading-none"
-                  style={{ color: "#EAE6DF" }}
-                >
-                  {title}
-                </h2>
-                
-                {/* 🎨 Changed card body descriptions to clear off-white (#EAE6DF) with comfortable readability masking */}
-                <p 
-                  className="mb-6 text-base font-light leading-relaxed max-md:text-sm opacity-90"
-                  style={{ color: "#EAE6DF" }}
-                >
-                  {text}
-                </p>
+                {/* Wrap layout text block together to keep separate from bottom image block node element */}
+                <div>
+                  <p className="caption text-[#8B9676] tracking-[0.15em] font-bold uppercase text-xs mb-3">
+                    {caption}
+                  </p>
+                  
+                  {/* 🎨 Card main titles */}
+                  <h2 
+                    className="max-w-400 mb-5 text-2xl md:text-3xl font-black uppercase tracking-tight leading-none"
+                    style={{ color: "#EAE6DF" }}
+                  >
+                    {title}
+                  </h2>
+                  
+                  {/* 🎨 Card body descriptions */}
+                  <p 
+                    className="mb-8 text-base font-light leading-relaxed max-md:text-sm opacity-90"
+                    style={{ color: "#EAE6DF" }}
+                  >
+                    {text}
+                  </p>
+                </div>
 
-                {/* Image Box Container */}
+                {/* Image Box Container - Pushed to the bottom edge uniformly */}
                 {image && (
-                  <div className="relative mb-4 overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950/30 aspect-[16/10] w-full">
+                  <div className="relative overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950/30 aspect-[16/10] w-full mt-auto">
                     
                     {/* 🎬 SLIDESHOW 1 */}
                     {index === 0 && (
@@ -115,17 +130,17 @@ const Features = () => {
               </div>
             ))}
 
-            {/* 🎛️ FEATURES BOTTOM DETAILS ROW */}
+            {/* 🎛️ FEATURES BOTTOM DETAILS BAR */}
             <ul className="relative grid grid-cols-2 justify-items-center w-full border-t border-zinc-800/60 bg-zinc-950/20 p-4 gap-y-4 gap-x-2 md:flex md:justify-around md:flex-grow md:px-[3%] md:py-0 md:gap-0 max-md:bg-zinc-900 max-md:border max-md:rounded-2xl">
               
               <div className="block md:hidden absolute left-1/2 top-4 bottom-4 w-px bg-zinc-800/40 transform -translate-x-1/2 pointer-events-none" />
 
-              {details.map(({ id, title }) => (
+              {/* 3. Mapping your custom specified labels directly */}
+              {customFooterDetails.map(({ id, title }) => (
                 <li 
                   key={id} 
                   className="relative py-3 px-3 flex flex-col items-center justify-center text-center w-full md:py-6 md:flex-1"
                 >
-                  {/* ⚡ THE FIX: Swapped out 'Bad Brush Custom' for 'Oswald' and forced clean off-white (#EAE6DF) typography layout parameters */}
                   <h3 
                     className="font-oswald relative z-2 max-w-64 mx-auto my-0 text-sm sm:text-base lg:text-lg font-bold tracking-wide uppercase text-center leading-tight select-none"
                     style={{ color: "#EAE6DF" }}

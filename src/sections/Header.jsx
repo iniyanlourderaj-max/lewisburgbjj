@@ -33,29 +33,35 @@ const Header = () => {
       
       {/* CONTAINER FRAME */}
       <div 
-        className={`w-full mx-auto border-b border-zinc-900/40 flex items-center justify-between min-h-[48px] px-6 md:px-12 transition-all duration-300 ease-out ${
+        className={`w-full mx-auto border-b border-zinc-900/40 flex items-center justify-between min-h-[64px] px-6 md:px-12 transition-all duration-300 ease-out ${
           isScrolled 
-            ? "bg-[#1A1A1A]/80 backdrop-blur-md py-1.5 shadow-md" 
-            : "bg-[#1A1A1A] py-2"
+            ? "bg-[#1A1A1A]/80 backdrop-blur-md py-2 shadow-md" 
+            : "bg-[#1A1A1A] py-3"
         }`}
       >
         
         {/* 🥋 LEFT ZONE: Brand Block */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-3">
           <Link 
             to="hero" 
             smooth={true} 
             duration={500} 
-            className="flex items-center cursor-pointer h-5 w-5 justify-center"
+            className="flex items-center cursor-pointer justify-center transition-transform duration-200 hover:scale-105"
           >
+            {/* 
+              ⚡ LOGO SIZE & VISIBILITY BOOST:
+              Changed src to target your public image file name exactly from Main_Outlined.JPG.
+              Increased sizes to h-12 (48px) and md:h-14 (56px) so details are visible.
+              Removed invert classes so white outer ring renders accurately.
+            */}
             <img 
-              src="/images/lbjj.svg" 
-              alt="Lewisburg BJJ" 
-              className="h-5 w-5 object-contain block invert brightness-200" 
+              src="/images/BJJ_logo.JPG" 
+              alt="Lewisburg BJJ Logo" 
+              className="h-12 w-12 md:h-14 md:w-14 rounded-full object-contain block shadow-md" 
             />
           </Link>
           <div 
-            className="flex flex-col text-white font-bold leading-none tracking-tighter text-xs"
+            className="flex flex-col text-white font-bold leading-none tracking-tighter text-xs md:text-sm"
             style={{ fontFamily: "'Oswald', sans-serif" }}
           >
             <span>LEWISBURG</span>
@@ -74,7 +80,7 @@ const Header = () => {
                 to={link.target}
                 spy={true}
                 smooth={true}
-                offset={-55}
+                offset={-75} // Adjusted slightly to give breathing room for the bigger header height
                 duration={500}
                 activeClass="text-white underline underline-offset-4"
                 className="text-zinc-300 hover:text-white text-sm lg:text-[15px] font-medium transition-colors duration-200 cursor-pointer hover:underline underline-offset-4 decoration-1 uppercase whitespace-nowrap"
@@ -114,7 +120,7 @@ const Header = () => {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="md:hidden text-zinc-400 hover:text-white focus:outline-none cursor-pointer flex items-center"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
             {isMobileMenuOpen ? (
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
             ) : (
@@ -133,7 +139,7 @@ const Header = () => {
             to={link.target}
             spy={true}
             smooth={true}
-            offset={-55}
+            offset={-75}
             duration={500}
             onClick={() => setIsMobileMenuOpen(false)}
             className="text-zinc-300 hover:text-white text-base font-medium py-1.5 border-b border-zinc-900/60 cursor-pointer block uppercase"

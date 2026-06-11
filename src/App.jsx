@@ -20,21 +20,22 @@ const App = () => {
       <Pricing />
       <Faq />
       <Testimonials />
-            <Coaches />
-            <Schedule/>
-            <Inquiry/>
+      <Coaches />
+      <Schedule/>
+      <Inquiry/>
       <Footer />
-        {/* FLOATING SIGN UP BUTTON - Transparent, bottom-left, responsive */}
-        <div className="fixed bottom-4 left-4 z-50 pointer-events-auto font-poppins">
-          <a 
-            href="https://lewisburg-bjj.gymdesk.com/signup"
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-block bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-black uppercase tracking-wider text-[10px] md:text-xs lg:text-sm px-3 py-2 md:px-4 md:py-2.5 lg:px-6 lg:py-3.5 rounded-xl transition-all duration-200 shadow-2xl hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] hover:-translate-y-1 active:translate-y-0 border border-white/20"
-          >
-            Sign Up
-          </a>
-        </div>
+      
+      {/* 🚀 FLOATING SIGN UP BUTTON - Bigger, bold, signature high-contrast premium gold/yellow layout */}
+      <div className="fixed bottom-6 left-6 z-50 pointer-events-auto font-poppins">
+        <a 
+          href="https://lewisburg-bjj.gymdesk.com/signup"
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="inline-block bg-[#D4AF37] hover:bg-[#EAE6DF] text-zinc-950 font-black uppercase tracking-widest text-xs md:text-sm px-5 py-3 md:px-7 md:py-4 rounded-xl transition-all duration-300 shadow-[0_15px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:-translate-y-1 active:translate-y-0 border border-zinc-950/10"
+        >
+          Sign Up
+        </a>
+      </div>
     </main>
   );
 };

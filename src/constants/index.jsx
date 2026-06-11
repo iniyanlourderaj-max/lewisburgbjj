@@ -71,24 +71,19 @@ export const faq = [
     id: "4",
     question: "Do you offer a free trial plan, or do I have to pay for my first class?",
     answer:
-"Your very first class at Lewisburg BJJ is completely free. We want you to step on the mats, meet our coaches, experience our community, and make sure it’s a perfect fit for you before spending a single dollar."
+"We do not offer a Free Trial Plan (We do offer a one time $20 / Drop in and a $59 2-week trial that comes with a free Gi (training Uniform) "
  },
   {
     id: "5",
     question: "Where is the gym located",
     answer:
-"We are located in our brand-new, completely renovated facility at 1722 W Market St, Lewisburg, PA 17837. Our facility features premium, sanitized mats, changing areas, and a spacious layout dedicated to world-class training"  },
+"We are located in our brand-new, completely renovated facility at 1722 W Market St, Lewisburg, PA 17837. Our facility features premium, sanitized mats, changing areas, showers and recovery services like cold plunge and sauna."  },
   {
     id: "6",
     question: "Can I upgrade my plan?",
     answer:
       "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
   },
-  {
-    id: "7",
-    question: "How do your memberships work?",
-    answer:
-"We offer flexible membership plans handled securely through our integrated digital student portal (Gymdesk). We believe in transparent billing with no hidden fees, giving you full access to manage your schedule, attendance, and account details seamlesssly"  },
   {
     id: "8",
     question: "Do you offer training for individuals and teams?",
