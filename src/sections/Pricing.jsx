@@ -5,30 +5,36 @@ import CountUp from "react-countup";
 import { plans } from "../constants/index.jsx";
 
 const Pricing = () => {
-  // Defaults to All-In membership view per request
   const [activeCategory, setActiveCategory] = useState("all-in-membership");
 
-  // Top level heavy core configuration types (Cleaned up emojis)
-  const coreSections = [
-    { id: "all-in-membership", label: "All-In Membership" },
-    { id: "base-membership", label: "Base Membership" },
-    { id: "available-separately", label: "Available Separately" },
-    { id: "kids-membership", label: "Kids Membership" },
-    { id: "womens-only-membership", label: "Women's Only" },
+  // Main Core categories mapped with priority tiers for layout scaling
+  const allCoreSections = [
+    { id: "all-in-membership", label: "All-In Membership", tier: "primary" },
+    { id: "base-membership", label: "Base Membership", tier: "standard" },
+    { id: "kids-membership", label: "Kids Membership", tier: "standard" },
+    { id: "womens-only-membership", label: "Women's Only", tier: "standard" },
+    { id: "available-separately", label: "Available Separately", tier: "utility" },
   ];
 
-  // Secondary sub-level smaller tracking buttons (Cleaned up emojis)
+  // Group configurations dynamically for the mobile 2-column fallback
+  const mobileGridSections = [
+    allCoreSections[0], // All-In
+    allCoreSections[1], // Base
+    allCoreSections[2], // Kids
+    allCoreSections[4], // Available Separately
+  ];
+  const mobileCenterSection = allCoreSections[3]; // Women's Only centered
+
+  // Bottom secondary utility links
   const minorSections = [
     { id: "trials-short-term", label: "Trials (2 Weeks)" },
     { id: "drop-in-passes", label: "Drop-In Passes" },
   ];
 
-  // Map and clean up local mock arrays or imported global constants dynamic values
   const sanitizePlanTitle = (title) => {
     return title.replace(/\s*\(\d+[A-Z]\)\s*/g, " ").trim();
   };
 
-  // Hardcoded mockup filter for Women's Only BJJ since it is its own tab now
   const filteredPlans = activeCategory === "womens-only-membership" 
     ? [
         {
@@ -57,90 +63,155 @@ const Pricing = () => {
   ].includes(activeCategory);
 
   return (
-    /* 🎨 BACKDROP: Original dark charcoal background retained */
-    <section id="pricing" className="bg-[#222222] py-24 font-poppins">
+    <section id="pricing" className="bg-[#222222] py-16 md:py-24 font-poppins">
       <Element name="pricing">
         <div className="container mx-auto px-4 max-w-7xl">
           
-          {/* Header titles layout block */}
+          {/* Header titles */}
           <div className="text-center mb-12">
             <h3 
-              className="text-white uppercase font-bold text-4xl sm:text-5xl md:text-4xl lg:text-5xl tracking-tighter mb-4 mt-2" 
+              className="text-white uppercase font-bold text-4xl sm:text-5xl md:text-4xl lg:text-5xl tracking-tighter mb-3 mt-2" 
               style={{ color: "#EAE6DF" }}
             >
               Membership Menu
             </h3>
             <p 
-              className="text-sm md:text-base max-w-xl mx-auto font-light"
+              className="text-xs sm:text-sm md:text-base max-w-xl mx-auto font-light"
               style={{ color: "rgba(234, 230, 223, 0.75)" }}
             >
-              Choose an option below. Standard long-term packages display sequentially down to upfront seasonal plans.
+              Select a track to view packages. Premium comprehensive programs featured prominently.
             </p>
           </div>
 
           {/* TAB WRAPPER DECK CONTAINER */}
-          <div className="flex flex-col items-center gap-4 mb-16 border-b border-zinc-900/60 pb-8 max-w-5xl mx-auto">
+          <div className="flex flex-col items-center gap-4 mb-12 border-b border-zinc-900/60 pb-8 max-w-6xl mx-auto w-full">
             
-            {/* PRIMARY CORE MEMBERSHIP HEADING TABS */}
-            <div className="flex flex-wrap justify-center gap-3 w-full">
-              {coreSections.map((tab) => (
-                <div 
-                  key={tab.id} 
-                  className="relative flex-1 min-w-[150px] max-w-[210px]"
-                >
-                  {/* STATIC "POPULAR" BADGE PLACED EXACTLY AT THE TOP-RIGHT CORNER EDGE */}
-                  {tab.id === "all-in-membership" && (
-                    <div className="absolute -top-2.5 -right-1 z-20 pointer-events-none select-none">
-                      <span className="bg-[#D4AF37] text-zinc-950 text-[9px] font-black tracking-widest px-2 py-0.5 rounded uppercase shadow-md border border-zinc-950">
-                        Popular
-                      </span>
-                    </div>
-                  )}
-
-                  {/* 
-                    ⚡ THE FIX: Replaced custom bright yellow with your signature gold hex style (#D4AF37) 
-                    matching the benchmark reference captured in image_0ef1ff.png.
-                  */}
-                  <button
-                    onClick={() => setActiveCategory(tab.id)}
+            {/* 💻 LAPTOP & DESKTOP LAYOUT (Clean, Tiered Row Hierarchy Fixed) */}
+            <div className="hidden md:flex flex-row items-center justify-center gap-3 w-full">
+              {allCoreSections.map((tab) => {
+                const isActive = activeCategory === tab.id;
+                
+                return (
+                  <div 
+                    key={tab.id} 
                     className={clsx(
-                      "w-full h-full px-4 py-3.5 rounded-xl text-xs font-black uppercase tracking-wider border cursor-pointer justify-center text-center relative transition-all duration-300 transform active:scale-95 shadow-md",
-                      activeCategory === tab.id
-                        ? "bg-[#D4AF37] text-black border-[#D4AF37] hover:bg-white hover:border-white shadow-lg scale-102"
-                        : "bg-[#D4AF37] text-black border-[#D4AF37] hover:bg-white hover:border-white"
+                      "relative transition-all duration-300",
+                      tab.tier === "primary" ? "flex-[1.15] max-w-[230px] min-w-[190px] z-10" : "flex-1 max-w-[210px] min-w-[170px]"
                     )}
                   >
-                    {tab.label}
-                  </button>
-                </div>
-              ))}
+                    {/* POPULAR ACCENT TAG */}
+                    {tab.tier === "primary" && (
+                      <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 z-20 pointer-events-none select-none w-max">
+                        <span className="bg-[#D4AF37] text-zinc-950 text-[8px] font-black tracking-widest px-2 py-0.5 rounded-sm uppercase shadow-md">
+                          Best Value
+                        </span>
+                      </div>
+                    )}
+
+                    <button
+                      onClick={() => setActiveCategory(tab.id)}
+                      className={clsx(
+                        "w-full rounded-xl uppercase tracking-wider border cursor-pointer transition-all duration-300 text-center flex items-center justify-center shadow-md",
+                        // Tier 1: Primary Button Style (Slightly taller & gold-focused)
+                        tab.tier === "primary" && (isActive 
+                          ? "h-20 text-xs font-black bg-zinc-950 text-white border-[#D4AF37] scale-105 shadow-[0_10px_30px_rgba(212,175,55,0.2)]" 
+                          : "h-20 text-xs font-black bg-zinc-900/90 text-[#D4AF37] border-zinc-800 hover:border-[#D4AF37]/50 hover:bg-zinc-900"),
+                        
+                        // Tier 2: Standard Button Style
+                        tab.tier === "standard" && (isActive 
+                          ? "h-16 text-xs font-black bg-zinc-950 text-white border-[#D4AF37]" 
+                          : "h-16 text-xs font-black bg-zinc-900/60 text-zinc-400 border-zinc-800/80 hover:border-zinc-700 hover:text-white"),
+                        
+                        // Tier 3: Utility Style (Fixes the camouflage in image_2837e0.png)
+                        tab.tier === "utility" && (isActive 
+                          ? "h-16 text-[11px] font-black bg-zinc-950 text-white border-[#D4AF37]" 
+                          : "h-16 text-[11px] font-bold bg-zinc-900/60 text-zinc-400 border-zinc-800/80 hover:border-zinc-700 hover:text-white")
+                      )}
+                    >
+                      {tab.label}
+                    </button>
+                  </div>
+                );
+              })}
             </div>
 
-            {/* SMALLER PASSTHROUGH TRIALS AND DROP-IN BUTTON HEADINGS */}
-            <div className="flex flex-wrap justify-center gap-2 w-full max-w-xl mt-2">
-              {minorSections.map((tab) => (
-                /* 
-                  ⚡ THE FIX: Updated lower filters to use the matching dark yellow scheme string.
-                */
+            {/* 📱 MOBILE LAYOUT BLOCK (2x2 Balanced Grid Fallback) */}
+            <div className="block md:hidden w-full space-y-3">
+              <div className="grid grid-cols-2 gap-3 w-full">
+                {mobileGridSections.map((tab) => {
+                  const isActive = activeCategory === tab.id;
+                  return (
+                    <div key={tab.id} className="relative w-full">
+                      {tab.id === "all-in-membership" && (
+                        <div className="absolute -top-2 right-4 z-20 pointer-events-none select-none">
+                          <span className="bg-[#D4AF37] text-zinc-950 text-[8px] font-black tracking-widest px-1.5 py-0.5 rounded-sm uppercase shadow">
+                            Popular
+                          </span>
+                        </div>
+                      )}
+                      <button
+                        onClick={() => setActiveCategory(tab.id)}
+                        className={clsx(
+                          "w-full h-14 sm:h-16 px-4 rounded-xl text-[11px] sm:text-xs font-black uppercase tracking-wider border cursor-pointer transition-all duration-300 text-center flex items-center justify-center shadow-md",
+                          isActive
+                            ? "bg-zinc-950 text-white border-[#D4AF37]"
+                            : tab.id === "all-in-membership"
+                              ? "bg-zinc-900 text-[#D4AF37] border-zinc-800"
+                              : "bg-zinc-900/60 text-zinc-400 border-zinc-800/80 hover:border-zinc-700"
+                        )}
+                      >
+                        {tab.label}
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+              
+              {/* Centered single option for mobile viewports */}
+              <div className="w-full flex justify-center">
                 <button
-                  key={tab.id}
-                  onClick={() => setActiveCategory(tab.id)}
+                  onClick={() => setActiveCategory(mobileCenterSection.id)}
                   className={clsx(
-                    "px-4 py-2 rounded-lg text-[11px] font-black uppercase tracking-wide border cursor-pointer transition-all duration-300 transform active:scale-95 shadow-sm",
-                    activeCategory === tab.id
-                      ? "bg-[#D4AF37] text-black border-[#D4AF37] hover:bg-white hover:border-white shadow-md"
-                      : "bg-[#D4AF37] text-black border-[#D4AF37] hover:bg-white hover:border-white"
+                    "w-1/2 min-w-[140px] h-14 sm:h-16 px-4 rounded-xl text-[11px] sm:text-xs font-black uppercase tracking-wider border cursor-pointer transition-all duration-300 text-center flex items-center justify-center shadow-md",
+                    activeCategory === mobileCenterSection.id
+                      ? "bg-zinc-950 text-white border-[#D4AF37]"
+                      : "bg-zinc-900/60 text-zinc-400 border-zinc-800/80"
                   )}
                 >
-                  {tab.label}
+                  {mobileCenterSection.label}
                 </button>
-              ))}
+              </div>
+            </div>
+
+            {/* MINOR TIER SUB-TABS */}
+            <div className="flex justify-center gap-3 w-full mt-4">
+              {minorSections.map((tab) => {
+                const isActive = activeCategory === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveCategory(tab.id)}
+                    className={clsx(
+                      "px-4 py-2.5 rounded-lg text-[10px] sm:text-[11px] font-bold uppercase tracking-wide border cursor-pointer transition-all duration-300 flex items-center gap-2 shadow-sm",
+                      isActive
+                        ? "bg-zinc-950 text-white border-[#D4AF37]"
+                        : "bg-zinc-900/40 text-zinc-500 border-zinc-800/40 hover:border-zinc-700 hover:text-zinc-300"
+                    )}
+                  >
+                    <span className={clsx(
+                      "w-1 h-1 rounded-full",
+                      isActive ? "bg-[#D4AF37]" : "bg-zinc-700"
+                    )} />
+                    {tab.label}
+                  </button>
+                );
+              })}
             </div>
 
           </div>
 
-          {/* LIST SELECTION VIEW LOOP DISPLAY FRAME */}
-          <div className="flex flex-col gap-4 max-w-4xl mx-auto min-h-[300px]">
+          {/* LIST SELECTION PACKAGES WRAPPER */}
+          <div className="flex flex-col gap-4 max-w-4xl mx-auto min-h-[250px] px-2">
             {filteredPlans.length > 0 ? (
               filteredPlans.map((plan) => (
                 <div
@@ -152,15 +223,14 @@ const Pricing = () => {
                       : "bg-zinc-950 border-zinc-900 hover:border-zinc-800 shadow-xl"
                   )}
                 >
-                  {/* Subtle Premium Background Glow Effect for highlighted tracks */}
                   {plan.isHighlighted && (
                     <div className="absolute inset-0 bg-gradient-to-r from-[#3D4A26]/0 via-[#3D4A26]/10 to-[#3D4A26]/0 opacity-100 pointer-events-none" />
                   )}
                   
-                  {/* LEFT: Metadata Text Block */}
+                  {/* LEFT: Information fields */}
                   <div className="flex-1 text-center md:text-left relative z-10">
                     <div 
-                      className="text-lg md:text-xl font-black tracking-wider uppercase mb-1 font-poppins transition-colors duration-300"
+                      className="text-lg md:text-xl font-black tracking-wider uppercase mb-1 font-poppins"
                       style={{ color: "#EAE6DF" }}
                     >
                       {plan.title}
@@ -173,7 +243,6 @@ const Pricing = () => {
                       {plan.caption}
                     </p>
                     
-                    {/* Inline small feature tags */}
                     <div className="flex flex-wrap justify-center md:justify-start gap-2">
                       {plan.features.map((feat, idx) => (
                         <span 
@@ -188,7 +257,7 @@ const Pricing = () => {
                     </div>
                   </div>
 
-                  {/* MIDDLE: Pricing Metrics Display Frame */}
+                  {/* MIDDLE: Pricing Display */}
                   <div 
                     className="flex items-baseline justify-center shrink-0 min-w-[150px] relative z-10 font-sans"
                     style={{ color: "#EAE6DF" }}
@@ -202,16 +271,13 @@ const Pricing = () => {
                     </span>
                   </div>
 
-                  {/* RIGHT: High Contrast Action Button Segment */}
+                  {/* RIGHT: Action Button Segment */}
                   <div className="w-full md:w-auto shrink-0 relative z-10">
-                    {/* 
-                      ⚡ THE FIX: Adjusted border color layout configuration keys to share the exact dark yellow palette tone.
-                    */}
                     <a
                       href={`https://lewisburg-bjj.gymdesk.com/signup?plan=${plan.gymdeskSlug}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block text-center w-full md:w-44 py-3.5 px-6 rounded-xl text-xs font-black uppercase tracking-[0.15em] border border-[#D4AF37] bg-[#D4AF37] text-black hover:bg-white hover:border-white hover:text-black transition-all duration-300 cursor-pointer shadow-lg transform active:scale-98"
+                      className="block text-center w-full md:w-44 py-3.5 px-6 rounded-xl text-xs font-black uppercase tracking-[0.15em] border border-zinc-800 bg-zinc-900 text-[#EAE6DF] hover:bg-[#D4AF37] hover:border-[#D4AF37] hover:text-black transition-all duration-300 cursor-pointer shadow-lg transform active:scale-98"
                     >
                       Select Plan
                     </a>
@@ -226,9 +292,9 @@ const Pricing = () => {
             )}
           </div>
 
-          {/* Family Plan rules footnote framework layouts */}
+          {/* Family Plan discount footer container */}
           {showFamilyDiscount && (
-            <div className="mt-20 border border-zinc-900 bg-zinc-950 rounded-3xl p-8 max-w-4xl mx-auto shadow-xl relative overflow-hidden">
+            <div className="mt-16 border border-zinc-900 bg-zinc-950 rounded-3xl p-6 md:p-8 max-w-4xl mx-auto shadow-xl relative overflow-hidden">
               <div className="absolute top-0 left-0 w-1.5 h-full bg-[#4A5A30]" />
               
               <h4 className="font-oswald text-xl font-bold uppercase tracking-wider text-[#D4AF37] mb-3 text-center md:text-left select-none">
