@@ -178,24 +178,41 @@ const FacilitiesPage = () => {
           </div>
 
           <div className="recovery-visuals">
-            <article>
-              <span>Cold / Heat</span>
-              <strong>Recover with intention.</strong>
-            </article>
+            {/* Card 1: Sauna */}
+            <figure className="recovery-chamber">
+              <img
+                src="/images/facility-sauna-4k.jpg"
+                alt="Traditional dry sauna at Lewisburg BJJ"
+              />
+              <figcaption>
+                <span>02 / Heat Therapy</span>
+                <strong>Traditional dry sauna.</strong>
+              </figcaption>
+            </figure>
+
+            {/* Card 2: Cold Plunge */}
             <figure className="recovery-chamber">
               <img
                 src="/images/facility-cold-plunge-4k.jpg"
                 alt="Cold plunge recovery at Lewisburg BJJ"
               />
               <figcaption>
-                <span>Cold plunge</span>
+                <span>01 / Cold Therapy</span>
                 <strong>Reset after the work.</strong>
               </figcaption>
             </figure>
-            <article>
-              <span>Reset / Restore</span>
-              <strong>Leave ready to return.</strong>
-            </article>
+
+            {/* Card 3: Changing Areas & Showers */}
+            <figure className="recovery-chamber">
+              <img
+                src="/images/facility-changing-rooms-4k.jpg"
+                alt="Showers and changing areas at Lewisburg BJJ"
+              />
+              <figcaption>
+                <span>03 / Amenities</span>
+                <strong>Clean changing rooms &amp; showers.</strong>
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>

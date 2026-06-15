@@ -24,17 +24,17 @@ const Footer = () => {
         </div>
 
         <div className="site-footer__grid">
-          <div>
+          <div className="footer-brand-col">
             <img src="/images/BJJ_logo.JPG" alt="Lewisburg BJJ" />
             <p>1722 W Market St<br />Lewisburg, PA 17837</p>
           </div>
-          <div>
+          <div className="footer-links-col">
             <span>Explore</span>
             <a href="/#features">About</a>
             <a href="/#pricing">Memberships</a>
             <a href="/#schedule">Schedule</a>
           </div>
-          <div>
+          <div className="footer-links-col">
             <span>Follow</span>
             {socials.map((social) => (
               <a key={social.id} href={social.url} target="_blank" rel="noopener noreferrer">
@@ -42,7 +42,7 @@ const Footer = () => {
               </a>
             ))}
           </div>
-          <div>
+          <div className="footer-links-col">
             <span>Legal</span>
             <button type="button" onClick={() => setModalType("privacy")}>Privacy policy</button>
             <button type="button" onClick={() => setModalType("terms")}>Terms of use</button>

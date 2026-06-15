@@ -69,6 +69,7 @@ const Pricing = () => {
 
           {featuredPlan && (
             <div className="membership-layout">
+              {/* Featured Card */}
               <article
                 className="membership-card membership-card--featured"
                 style={{ gridRow: `1 / span ${supportingRows}` }}
@@ -103,24 +104,32 @@ const Pricing = () => {
                 </a>
               </article>
 
+              {/* Supporting Cards */}
               {supportingPlans.map((plan, index) => (
                 <article
                   className="membership-card membership-card--supporting"
                   key={plan.id}
                   style={supportingPosition(index)}
                 >
-                  <p>Membership option</p>
-                  <h3>{plan.title}</h3>
-                  <div className="membership-price">
-                    <strong><sup>$</sup>{plan.price}</strong>
-                    <small>{plan.period || "/ mo"}</small>
+                  <div className="membership-card__top">
+                    <div>
+                      <p>Membership option</p>
+                      <h3>{plan.title}</h3>
+                    </div>
+                    <div className="membership-price">
+                      <strong><sup>$</sup>{plan.price}</strong>
+                      <small>{plan.period || "/ mo"}</small>
+                    </div>
                   </div>
+                  
                   <p className="membership-card__description">{plan.caption}</p>
+                  
                   <ul className="membership-features">
-                    {plan.features.slice(0, 2).map((feature) => (
+                    {plan.features.map((feature) => (
                       <li key={feature}><span>+</span>{feature}</li>
                     ))}
                   </ul>
+                  
                   <a
                     className="membership-card__button membership-card__button--outline"
                     href={signupUrl(plan)}
@@ -132,6 +141,7 @@ const Pricing = () => {
                 </article>
               ))}
 
+              {/* Family Fallback Card */}
               {supportingPlans.length === 0 && (
                 <article
                   className="membership-card membership-card--supporting membership-card--family"
