@@ -88,14 +88,15 @@ const FacilitiesPage = () => {
             </p>
           </div>
 
-          <div className="performance-grid">
-            <div className="performance-grid__image">
-              <img
-                src="/images/facility-striking-kick-4k.jpg"
-                alt="Striking training at Lewisburg BJJ"
-              />
-              <span>Striking / Technical development</span>
-            </div>
+          <p className="facility-swipe-hint">
+            Swipe to explore the training spaces
+          </p>
+          <div
+            className="performance-grid"
+            role="region"
+            aria-label="Performance training facilities"
+            tabIndex={0}
+          >
             <article className="performance-card performance-card--image">
               <img
                 src="/images/facility-kettlebell-4k.jpg"
@@ -126,7 +127,12 @@ const FacilitiesPage = () => {
             </article>
           </div>
 
-          <div className="training-gallery">
+          <div
+            className="training-gallery"
+            role="region"
+            aria-label="Training gallery"
+            tabIndex={0}
+          >
             <figure>
               <img
                 src="/images/F3.png"
@@ -178,9 +184,15 @@ const FacilitiesPage = () => {
           </div>
 
           <div className="recovery-visuals">
-            <article>
-              <span>Cold / Heat</span>
-              <strong>Recover with intention.</strong>
+            <article className="recovery-card--image">
+              <img
+                src="/images/facility-cold-heat-ai.png"
+                alt="Cold plunge and sauna recovery area"
+              />
+              <div>
+                <span>Cold / Heat</span>
+                <strong>Recover with intention.</strong>
+              </div>
             </article>
             <figure className="recovery-chamber">
               <img
@@ -192,9 +204,15 @@ const FacilitiesPage = () => {
                 <strong>Reset after the work.</strong>
               </figcaption>
             </figure>
-            <article>
-              <span>Reset / Restore</span>
-              <strong>Leave ready to return.</strong>
+            <article className="recovery-card--image">
+              <img
+                src="/images/facility-reset-restore-ai.png"
+                alt="Post-training recovery bench and equipment"
+              />
+              <div>
+                <span>Reset / Restore</span>
+                <strong>Leave ready to return.</strong>
+              </div>
             </article>
           </div>
         </div>

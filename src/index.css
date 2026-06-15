@@ -102,10 +102,10 @@ img {
 .site-footer h2 {
   margin: 0;
   font-family: "Barlow Condensed", sans-serif;
-  font-size: clamp(48px, 7vw, 88px);
+  font-size: clamp(42px, 5.4vw, 72px);
   font-weight: 900;
   letter-spacing: -0.045em;
-  line-height: 0.87;
+  line-height: 0.94;
   text-transform: uppercase;
 }
 
@@ -311,10 +311,10 @@ img {
   margin: 0;
   color: var(--bone);
   font-family: "Barlow Condensed", sans-serif;
-  font-size: clamp(72px, 10vw, 142px);
+  font-size: clamp(56px, 6vw, 90px);
   font-weight: 900;
   letter-spacing: -0.055em;
-  line-height: 0.78;
+  line-height: 0.96;
   text-transform: uppercase;
 }
 
@@ -406,7 +406,7 @@ img {
 }
 
 .academy-copy h2 {
-  font-size: clamp(48px, 6vw, 78px);
+  font-size: clamp(42px, 5vw, 68px);
 }
 
 .academy-copy > p:not(.eyebrow) {
@@ -1043,7 +1043,7 @@ img {
 
 .site-footer h2 {
   max-width: 720px;
-  font-size: clamp(44px, 6vw, 78px);
+  font-size: clamp(40px, 4.8vw, 64px);
 }
 
 .site-footer__grid {
@@ -1186,9 +1186,9 @@ body :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, 
 }
 
 .hero-section h1 {
-  max-width: 920px;
-  font-size: clamp(64px, 7.2vw, 108px);
-  line-height: 0.92;
+  max-width: 820px;
+  font-size: clamp(56px, 6vw, 90px);
+  line-height: 0.96;
 }
 
 .hero-section__copy {
@@ -1204,7 +1204,7 @@ body :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, 
 }
 
 .pricing-header h2 {
-  font-size: clamp(48px, 5.5vw, 76px);
+  font-size: clamp(42px, 4.8vw, 66px);
 }
 
 .pricing-header .pricing-tabs {
@@ -1729,13 +1729,13 @@ body :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, 
 }
 
 .facilities-hero h1 {
-  max-width: 940px;
+  max-width: 1180px;
   margin: 0;
   color: var(--bone);
-  font-size: clamp(70px, 9vw, 132px);
+  font-size: clamp(60px, 6.6vw, 96px);
   font-weight: 500;
   letter-spacing: -0.065em;
-  line-height: 0.84;
+  line-height: 0.92;
   text-transform: uppercase;
 }
 
@@ -1801,10 +1801,10 @@ body :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, 
 .member-space h2,
 .facility-cta h2 {
   margin: 0;
-  font-size: clamp(52px, 7vw, 90px);
+  font-size: clamp(44px, 5.3vw, 72px);
   font-weight: 500;
   letter-spacing: -0.055em;
-  line-height: 0.92;
+  line-height: 0.98;
   text-transform: uppercase;
 }
 
@@ -1873,8 +1873,12 @@ body :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, 
 
 .performance-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) repeat(2, minmax(220px, 0.6fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.facility-swipe-hint {
+  display: none;
 }
 
 .performance-grid__image {
@@ -2102,14 +2106,40 @@ body :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, 
 
 .recovery-visuals article::before {
   position: absolute;
+  z-index: 2;
   inset: 18px;
   border: 1px solid rgba(214, 173, 66, 0.16);
   box-shadow: inset 0 0 40px rgba(214, 173, 66, 0.08);
   content: "";
+  pointer-events: none;
+}
+
+.recovery-card--image::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(7, 8, 8, 0.96), rgba(7, 8, 8, 0.12) 72%);
+  content: "";
+}
+
+.recovery-card--image > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.recovery-card--image > div {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
 }
 
 .recovery-visuals article strong {
-  position: relative;
+  display: block;
   margin-top: 12px;
   color: var(--bone);
   font-size: 20px;
@@ -2338,7 +2368,7 @@ body :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, 
   }
 
   .performance-grid {
-    grid-template-columns: 1.3fr 0.7fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .performance-grid article:last-child {
@@ -2397,9 +2427,9 @@ body :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, 
   }
 
   .hero-section h1 {
-    max-width: 620px;
-    font-size: clamp(52px, 14vw, 76px);
-    line-height: 0.94;
+    max-width: 540px;
+    font-size: clamp(46px, 11.5vw, 64px);
+    line-height: 0.98;
   }
 
   .hero-section__copy {
@@ -2563,7 +2593,7 @@ body :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, 
   }
 
   .membership-card--supporting {
-    min-height: 260px;
+    min-height: 100%;
     padding: 22px 18px;
   }
 
@@ -2580,7 +2610,30 @@ body :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, 
   }
 
   .membership-card--supporting .membership-card__description {
+    display: block;
     font-size: 10px;
+    line-height: 1.6;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+  }
+
+  .membership-card--supporting .membership-features {
+    display: grid;
+    gap: 8px;
+    margin: 18px 0;
+  }
+
+  .membership-card--supporting .membership-features li {
+    gap: 7px;
+    font-size: 9px;
+    line-height: 1.45;
+  }
+
+  .membership-card--supporting .membership-features li span {
+    flex-basis: 14px;
+    width: 14px;
+    height: 14px;
+    font-size: 8px;
   }
 
   .membership-card--supporting .membership-card__button {
@@ -2652,7 +2705,9 @@ body :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, 
   }
 
   .facilities-hero h1 {
-    font-size: clamp(56px, 16vw, 82px);
+    max-width: 92%;
+    font-size: clamp(48px, 12vw, 64px);
+    line-height: 0.98;
   }
 
   .facility-facts .page-frame {
@@ -2675,24 +2730,56 @@ body :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, 
     min-height: 380px;
   }
 
+  .facility-swipe-hint {
+    display: block;
+    margin: -38px 0 18px;
+    color: var(--gold);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-align: right;
+    text-transform: uppercase;
+  }
+
   .performance-grid {
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    gap: 12px;
+    width: calc(100% + 15px);
+    padding-right: 15px;
+    overflow-x: auto;
+    border: 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
   }
 
-  .performance-grid__image {
-    grid-column: 1 / -1;
-    min-height: 390px;
+  .performance-grid::-webkit-scrollbar {
+    display: none;
   }
 
+  .performance-grid__image,
   .performance-grid article,
   .performance-grid article:last-child {
-    grid-column: auto;
-    min-height: 330px;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    flex: 0 0 min(84vw, 390px);
+    min-height: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    scroll-snap-align: start;
   }
 
-  .performance-grid article:first-of-type {
-    border-left: 0;
+  .performance-card--image > div {
+    padding: 28px 24px;
+  }
+
+  .performance-grid article h3 {
+    max-width: 270px;
+    margin: 14px 0;
+    font-size: clamp(25px, 8vw, 34px);
+  }
+
+  .performance-grid article p {
+    max-width: 280px;
+    color: #c2beb5;
+    font-size: 12px;
+    line-height: 1.65;
   }
 
   .training-gallery {
@@ -2843,7 +2930,33 @@ body :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, 
   }
 
   .site-footer__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px 14px;
+    padding: 34px 0;
+  }
+
+  .site-footer__grid .footer-brand-col {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .site-footer__grid img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .site-footer__grid p,
+  .site-footer__grid a,
+  .site-footer__grid button {
+    font-size: 10px;
+  }
+
+  .site-footer__grid span {
+    margin-bottom: 2px;
+    font-size: 9px;
   }
 
   .site-footer__bottom {
