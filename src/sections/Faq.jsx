@@ -1,91 +1,108 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Element } from "react-scroll";
 import { faq } from "../constants/index.jsx";
 
-const Faq = () => {
-  const [openItems, setOpenItems] = useState({});
+const faqCopy = {
+  "0": {
+    question: "Do I need to be in shape to start training?",
+    answer: "Absolutely not. Training Jiu-Jitsu helps you get into shape. Our classes let you pace yourself while building functional strength, flexibility, and cardiovascular endurance.",
+  },
+  "1": {
+    question: "I have zero martial arts experience. Will I fit in?",
+    answer: "Yes. Most of our members started exactly where you are today. Our fundamentals classes introduce beginners to Jiu-Jitsu in a safe, ego-free, and welcoming environment.",
+  },
+  "2": {
+    question: "Do I need to compete to fit in?",
+    answer: "Not at all. Most members are professionals, students, and parents. Our culture is built around mutual growth, safety, and support, whether you want to compete or simply enjoy training.",
+  },
+  "3": {
+    question: "Is Brazilian Jiu-Jitsu safe?",
+    answer: "Student safety is our highest priority. We emphasize controlled drilling, mutual respect, and tapping early. You remain in control of your training intensity.",
+  },
+  "4": {
+    question: "Do you offer a free trial?",
+    answer: "We do not offer a free trial. We offer a one-time $20 drop-in and a $59 two-week trial that includes a free gi, or training uniform.",
+  },
+  "5": {
+    question: "Where is the gym located?",
+    answer: "We are located at 1722 W Market St, Lewisburg, PA 17837. Our renovated facility features sanitized mats, changing areas, showers, a cold plunge, and a sauna.",
+  },
+  "6": {
+    question: "Can I upgrade my plan?",
+    answer: "Absolutely. You can upgrade your plan at any time, and eligible changes are prorated so you receive the proper value from your membership.",
+  },
+  "8": {
+    question: "Do you offer training for individuals and teams?",
+    answer: "Yes. Whether you want to improve your fitness, learn practical self-defense, or prepare for competition, our classes can support your goals at your own pace.",
+  },
+  "9": {
+    question: "Can I train with previous injuries or limited mobility?",
+    answer: "Often, yes. Many members begin in their 30s, 40s, or 50s. Tell your coaches about any conditions or limitations before class so they can help you modify techniques safely.",
+  },
+};
 
-  const toggleItem = (id) => {
-    setOpenItems((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
+const Faq = () => {
+  const [openItem, setOpenItem] = useState(faq[0]?.id ?? null);
 
   return (
-    // 🎨 Background matching the exact bone/beige hex code from image_89ed62.png
-    <section id="faq" className="bg-[#EAE6DF] text-zinc-950 py-24 antialiased">
-      <Element name="faq" className="max-w-4xl mx-auto px-6">
-        
-        {/* Main Section Header Layout */}
-        <div className="mb-10">
-          {/* ⚡ FIXED FONT: Styled to look identical to the "FAQS" title in image_89e63f.jpg */}
-          <h2 
-            className="text-4xl md:text-5xl font-bold uppercase tracking-normal text-zinc-900 mb-4"
-            style={{ fontFamily: "'Oswald', 'Bebas Neue', sans-serif", transform: "scaleY(1.05)" }}
-          >
-            FAQS
-          </h2>
-          
-          {/* ⚡ PRODUCT INFO: Dull muted gold/brown subheader as seen in image_89e63f.jpg */}
-          <p 
-            className="text-[#9A8454] text-sm md:text-base font-bold uppercase tracking-wide"
-            style={{ fontFamily: "'Oswald', 'Bebas Neue', sans-serif" }}
-          >
-            You've got questions, we've got answers.
-          </p>
+    <Element name="faq">
+      <section id="faq" className="section section--bone faq-section">
+        <div className="page-frame">
+          <div className="section-heading section-heading--split">
+            <div>
+              <p className="eyebrow">Before your first class</p>
+              <h2>FAQ</h2>
+            </div>
+            <p>
+              Everything you need to know about starting, training safely, and
+              finding the right path at Lewisburg BJJ.
+            </p>
+          </div>
+
+          <div className="faq-layout">
+            <aside className="faq-aside">
+              <span>Need more help?</span>
+              <p>
+                Send us a message and our team will help you choose the right
+                class or membership.
+              </p>
+              <a href="#contact">Ask a question +</a>
+            </aside>
+
+            <div className="faq-list">
+              {faq.map((item, index) => {
+                const isOpen = openItem === item.id;
+                const answerId = `faq-answer-${item.id}`;
+                const copy = faqCopy[item.id] ?? item;
+
+                return (
+                  <article className={`faq-item ${isOpen ? "faq-item--open" : ""}`} key={item.id}>
+                    <button
+                      type="button"
+                      aria-expanded={isOpen}
+                      aria-controls={answerId}
+                      onClick={() => setOpenItem(isOpen ? null : item.id)}
+                    >
+                      <span className="faq-item__number">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <h3>{copy.question}</h3>
+                      <b aria-hidden="true">{isOpen ? "−" : "+"}</b>
+                    </button>
+
+                    <div className="faq-item__answer" id={answerId}>
+                      <div>
+                        <p>{copy.answer}</p>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
         </div>
-
-        {/* Minimalist Flat List Container */}
-        <div className="border-t border-zinc-500/80">
-          {faq.map((item) => {
-            const isOpen = !!openItems[item.id];
-
-            return (
-              <div 
-                key={item.id} 
-                className="border-b border-zinc-500/80"
-              >
-                {/* Clickable Header Row */}
-                <div 
-                  className="flex items-center justify-between gap-6 py-4 cursor-pointer group select-none"
-                  onClick={() => toggleItem(item.id)}
-                >
-                  {/* ⚡ QUESTION STYLING: Bold, compact, flat-edged compressed sans-serif */}
-                  <h3 
-                    className="text-lg md:text-xl font-bold uppercase tracking-wide text-zinc-900 group-hover:text-black transition-colors duration-200 leading-none"
-                    style={{ fontFamily: "'Oswald', 'Bebas Neue', sans-serif" }}
-                  >
-                    {item.question}
-                  </h3>
-
-                  {/* Clean text-based tracking '+' token from image_89e63f.jpg */}
-                  <span 
-                    className={`text-xl md:text-2xl font-light text-zinc-600 group-hover:text-black transition-transform duration-300 shrink-0 select-none ${
-                      isOpen ? "rotate-45 text-black" : ""
-                    }`}
-                  >
-                    +
-                  </span>
-                </div>
-
-                {/* Animated Answer Collapse Tray */}
-                <div 
-                  className={`grid transition-all duration-300 ease-in-out ${
-                    isOpen ? "grid-rows-[1fr] opacity-100 pb-5" : "grid-rows-[0fr] opacity-0"
-                  }`}
-                >
-                  <div className="overflow-hidden max-w-3xl">
-                    {/* BODY TEXT: Simple fallback clean text matching your second screen reference */}
-                    <p className="text-zinc-800 text-sm md:text-base font-normal leading-relaxed font-sans">
-                      {item.answer}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-      </Element>
-    </section>
+      </section>
+    </Element>
   );
 };
 
