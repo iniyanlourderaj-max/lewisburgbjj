@@ -4,7 +4,10 @@ const Testimonials = () => {
   const [featured, ...supporting] = testimonials;
 
   return (
-    <section className="section section--ink testimonials-section">
+    <section
+      id="testimonials"
+      className="section section--ink testimonials-section"
+    >
       <div className="page-frame">
         <div className="section-heading section-heading--split">
           <div>

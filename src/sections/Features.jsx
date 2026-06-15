@@ -61,6 +61,9 @@ const Features = () => (
               get in shape, Lewisburg BJJ gives you a place to build real
               skill.
             </p>
+            <a className="academy-card__button" href="#testimonials">
+              Member stories
+            </a>
           </article>
 
           <article>
@@ -73,6 +76,12 @@ const Features = () => (
               your stand-up skills, we offer well-rounded training for every
               experience level.
             </p>
+            <a
+              className="academy-card__button"
+              href="/facilities/"
+            >
+              Explore facilities
+            </a>
           </article>
         </div>
 

@@ -141,29 +141,35 @@ const Pricing = () => {
                 </article>
               ))}
 
-              {/* Family Fallback Card */}
-              {supportingPlans.length === 0 && (
-                <article
-                  className="membership-card membership-card--supporting membership-card--family"
-                  style={supportingPosition(0)}
-                >
-                  <p>Family membership</p>
-                  <h3>Train together</h3>
-                  <p className="membership-card__description">
-                    Dependents receive 50% off their respective training track.
-                  </p>
-                  <a
-                    className="membership-card__button membership-card__button--outline"
-                    href="https://lewisburg-bjj.gymdesk.com/signup"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Explore family options
-                  </a>
-                </article>
-              )}
             </div>
           )}
+
+          <aside className="family-note">
+            <span>Family discount</span>
+            <div className="family-note__content">
+              <p>
+                Train together and save. Dependents receive 50% off their
+                respective membership track.
+              </p>
+              <div className="family-note__example">
+                <div>
+                  <span>Parent · All-In, 18 months</span>
+                  <strong>$135 / mo</strong>
+                </div>
+                <div>
+                  <span>Each child · 18 months</span>
+                  <strong>$40 / mo <small>50% of $80</small></strong>
+                </div>
+              </div>
+            </div>
+            <a
+              href="https://lewisburg-bjj.gymdesk.com/signup"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Explore family options <span aria-hidden="true">+</span>
+            </a>
+          </aside>
         </div>
       </section>
     </Element>
