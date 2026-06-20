@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "../sections/Header.jsx";
 import Footer from "../sections/Footer.jsx";
 
@@ -8,6 +8,81 @@ const facilityFacts = [
   ["03", "Cold plunge & sauna"],
   ["04", "Changing areas & showers"],
 ];
+
+const matSpaceSlides = [
+  {
+    src: "/images/IMG_4349.jpg",
+    alt: "Wide view of the Lewisburg BJJ mat space",
+    caption: "Open mat space / Lewisburg, PA",
+  },
+  {
+    src: "/images/IMG_4253.jpg",
+    alt: "Heavy bag and training area at Lewisburg BJJ",
+    caption: "Striking and grappling space",
+  },
+  {
+    src: "/images/IMG_4393.jpg",
+    alt: "Lewisburg BJJ academy floor and wall logo",
+    caption: "Purpose-built training floor",
+  },
+];
+
+const memberSpaceSlides = [
+  {
+    src: "/images/IMG_4292.jpg",
+    alt: "Lewisburg BJJ students seated on the mats",
+  },
+  {
+    src: "/images/IMG_4188.jpg",
+    alt: "Brazilian Jiu-Jitsu students drilling at Lewisburg BJJ",
+  },
+  {
+    src: "/images/IMG_4425.jpg",
+    alt: "Member preparation space at Lewisburg BJJ",
+  },
+];
+
+const ImageSlideshow = ({ slides, label, className = "" }) => {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const slide = slides[activeSlide];
+
+  const showPrevious = () => {
+    setActiveSlide((index) => (index === 0 ? slides.length - 1 : index - 1));
+  };
+
+  const showNext = () => {
+    setActiveSlide((index) => (index + 1) % slides.length);
+  };
+
+  return (
+    <figure className={`image-slideshow ${className}`} aria-label={label}>
+      <div className="image-slideshow__stage" aria-live="polite">
+        {slides.map((item, index) => (
+          <img
+            key={item.src}
+            className={index === activeSlide ? "is-active" : ""}
+            src={item.src}
+            alt={item.alt}
+            aria-hidden={index !== activeSlide}
+          />
+        ))}
+      </div>
+      {slide.caption && <figcaption>{slide.caption}</figcaption>}
+      <div className="image-slideshow__controls">
+        <button type="button" onClick={showPrevious} aria-label={`Previous ${label}`}>
+          <span aria-hidden="true">&lt;</span>
+        </button>
+        <p>
+          {String(activeSlide + 1).padStart(2, "0")} /{" "}
+          {String(slides.length).padStart(2, "0")}
+        </p>
+        <button type="button" onClick={showNext} aria-label={`Next ${label}`}>
+          <span aria-hidden="true">&gt;</span>
+        </button>
+      </div>
+    </figure>
+  );
+};
 
 const FacilitiesPage = () => {
   useEffect(() => {
@@ -21,7 +96,7 @@ const FacilitiesPage = () => {
 
       <section className="facilities-hero">
         <img
-          src="/images/lbjj_4k_4.png"
+          src="/images/IMG_4410.jpg"
           alt="Brazilian Jiu-Jitsu training at Lewisburg BJJ"
         />
         <div className="facilities-hero__overlay" />
@@ -69,10 +144,11 @@ const FacilitiesPage = () => {
                 <li>Adult and youth programs</li>
               </ul>
             </div>
-            <figure>
-              <img src="/images/F2.png" alt="Lewisburg BJJ academy mat space" />
-              <figcaption>Train with purpose / Lewisburg, PA</figcaption>
-            </figure>
+            <ImageSlideshow
+              slides={matSpaceSlides}
+              label="mat space photos"
+              className="facility-intro__slideshow"
+            />
           </div>
         </div>
       </section>
@@ -99,8 +175,8 @@ const FacilitiesPage = () => {
           >
             <article className="performance-card performance-card--image">
               <img
-                src="/images/facility-kettlebell-4k.jpg"
-                alt="Kettlebell strength training at Lewisburg BJJ"
+                src="/images/IMG_4378.jpg"
+                alt="Striking and conditioning class at Lewisburg BJJ"
               />
               <div>
                 <span>01 / Strength</span>
@@ -113,7 +189,7 @@ const FacilitiesPage = () => {
             </article>
             <article className="performance-card performance-card--image">
               <img
-                src="/images/facility-padwork-4k.jpg"
+                src="/images/IMG_4403.jpg"
                 alt="Padwork and technical striking training at Lewisburg BJJ"
               />
               <div>
@@ -135,7 +211,7 @@ const FacilitiesPage = () => {
           >
             <figure>
               <img
-                src="/images/F3.png"
+                src="/images/IMG_4325.jpg"
                 alt="Brazilian Jiu-Jitsu guard training at Lewisburg BJJ"
               />
               <figcaption>
@@ -154,7 +230,7 @@ const FacilitiesPage = () => {
             </div>
             <figure>
               <img
-                src="/images/F4.png"
+                src="/images/IMG_4194.jpg"
                 alt="Brazilian Jiu-Jitsu back control training at Lewisburg BJJ"
               />
               <figcaption>
@@ -186,7 +262,7 @@ const FacilitiesPage = () => {
           <div className="recovery-visuals">
             <article className="recovery-card--image">
               <img
-                src="/images/facility-cold-heat-ai.png"
+                src="/images/IMG_4414.jpg"
                 alt="Cold plunge and sauna recovery area"
               />
               <div>
@@ -196,7 +272,7 @@ const FacilitiesPage = () => {
             </article>
             <figure className="recovery-chamber">
               <img
-                src="/images/facility-cold-plunge-4k.jpg"
+                src="/images/IMG_4415.jpg"
                 alt="Cold plunge recovery at Lewisburg BJJ"
               />
               <figcaption>
@@ -206,7 +282,7 @@ const FacilitiesPage = () => {
             </figure>
             <article className="recovery-card--image">
               <img
-                src="/images/facility-reset-restore-ai.png"
+                src="/images/IMG_4412.jpg"
                 alt="Post-training recovery bench and equipment"
               />
               <div>
@@ -229,11 +305,25 @@ const FacilitiesPage = () => {
               Arrive, get settled, do the work, and leave better than you came.
             </p>
           </div>
-          <img src="/images/lbjj_4k_2.png" alt="Lewisburg BJJ academy community" />
+          <ImageSlideshow
+            slides={memberSpaceSlides}
+            label="member space photos"
+            className="member-space__slideshow"
+          />
         </div>
       </section>
 
       <section className="facility-cta">
+        <video
+          className="facility-cta__video"
+          src="/images/IMG_4280.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+        />
+        <div className="facility-cta__overlay" />
         <div className="page-frame">
           <p className="eyebrow">See it for yourself</p>
           <h2>Ready to enter the academy?</h2>

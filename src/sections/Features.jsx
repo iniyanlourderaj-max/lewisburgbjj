@@ -15,13 +15,13 @@ const Features = () => (
           <div className="academy-collage">
             <img
               className="academy-collage__main"
-              src="/images/lbjj_4k_4.png"
-              alt="Brazilian Jiu-Jitsu stand-up training at Lewisburg BJJ"
+              src="/images/IMG_4409.jpg"
+              alt="Lewisburg BJJ academy mat space with heavy bags"
             />
             <img
               className="academy-collage__inset"
-              src="/images/lbjj_4k_2.png"
-              alt="Lewisburg BJJ academy team"
+              src="/images/IMG_4176.jpg"
+              alt="Brazilian Jiu-Jitsu training at Lewisburg BJJ"
             />
             <span className="academy-collage__stamp">LBJJ / PA</span>
           </div>
@@ -51,7 +51,7 @@ const Features = () => (
         </div>
 
         <div className="academy-descriptions">
-          <article>
+          <article className="academy-description-card academy-description-card--training">
             <p className="eyebrow">Premier martial arts</p>
             <h3>Lewisburg BJJ &amp; striking</h3>
             <p>
@@ -66,7 +66,7 @@ const Features = () => (
             </a>
           </article>
 
-          <article>
+          <article className="academy-description-card academy-description-card--community">
             <p className="eyebrow">Our academy values</p>
             <h3>A family environment for all</h3>
             <p>

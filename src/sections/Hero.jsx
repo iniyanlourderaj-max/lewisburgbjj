@@ -5,14 +5,14 @@ const Hero = () => (
     <section className="hero-section">
       <img
         className="hero-section__image"
-        src="/images/lbjj___.png"
-        alt="Lewisburg BJJ students watching instruction"
+        src="/images/IMG_4426.jpg"
+        alt="Lewisburg BJJ striking class training on the mats"
       />
       <div className="hero-section__overlay" />
       <div className="hero-section__grain" />
 
       <div className="page-frame hero-section__content">
-        <p className="eyebrow">Lewisburg, Pennsylvania / Est. 2024</p>
+        <p className="eyebrow">Lewisburg, PA / Established in 2022</p>
         <h1>
           A new standard
           <br />

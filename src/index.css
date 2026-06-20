@@ -430,6 +430,8 @@ img {
 }
 
 .academy-descriptions article {
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   min-height: 440px;
@@ -439,7 +441,35 @@ img {
 .academy-descriptions article + article {
   padding-right: 0;
   padding-left: 58px;
-  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  border-left: 0;
+}
+
+.academy-description-card {
+  background-position: center;
+  background-size: cover;
+}
+
+.academy-description-card::before {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(16, 17, 17, 0.94), rgba(16, 17, 17, 0.72)),
+    linear-gradient(0deg, rgba(16, 17, 17, 0.95), transparent 70%);
+  content: "";
+  opacity: 0.92;
+}
+
+.academy-description-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.academy-description-card--training {
+  background-image: url("/images/IMG_4385.jpg");
+}
+
+.academy-description-card--community {
+  background-image: url("/images/IMG_4287.jpg");
 }
 
 .academy-descriptions h3 {
@@ -1904,6 +1934,7 @@ body :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, 
 }
 
 .facility-intro figure {
+  position: relative;
   margin: 0;
 }
 
@@ -1921,6 +1952,82 @@ body :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, 
   letter-spacing: 0.14em;
   text-align: right;
   text-transform: uppercase;
+}
+
+.image-slideshow {
+  position: relative;
+  overflow: hidden;
+  background: #131414;
+}
+
+.image-slideshow__stage {
+  position: relative;
+  width: 100%;
+  min-height: 580px;
+}
+
+.image-slideshow__stage img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 240ms ease, visibility 240ms ease;
+}
+
+.image-slideshow__stage img.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.image-slideshow__controls {
+  position: absolute;
+  z-index: 3;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border: 1px solid rgba(238, 233, 220, 0.24);
+  background: rgba(8, 9, 9, 0.72);
+  backdrop-filter: blur(10px);
+}
+
+.image-slideshow__controls button {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(238, 233, 220, 0.24);
+  color: var(--bone);
+  background: transparent;
+  cursor: pointer;
+  transition: 180ms ease;
+}
+
+.image-slideshow__controls button:hover {
+  color: var(--black);
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.image-slideshow__controls span {
+  display: block;
+  font-size: 28px;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.image-slideshow__controls p {
+  min-width: 54px;
+  margin: 0;
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-align: center;
 }
 
 .performance-section {
@@ -2285,12 +2392,46 @@ body :where(h1, h2, h3, h4, h5, h6, p, a, button, span, label, input, textarea, 
   object-fit: cover;
 }
 
+.member-space .image-slideshow {
+  width: 100%;
+  min-height: 430px;
+}
+
+.member-space .image-slideshow__stage {
+  min-height: 430px;
+}
+
 .facility-cta {
+  position: relative;
+  overflow: hidden;
   padding: 110px 0;
   text-align: center;
+  background: #070808;
+}
+
+.facility-cta__video,
+.facility-cta__overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.facility-cta__video {
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.64;
+}
+
+.facility-cta__overlay {
   background:
-    linear-gradient(rgba(7, 8, 8, 0.9), rgba(7, 8, 8, 0.96)),
-    url("/images/lbjj_4k_3.jpg") center 55% / cover;
+    linear-gradient(rgba(7, 8, 8, 0.82), rgba(7, 8, 8, 0.96)),
+    radial-gradient(circle at 50% 40%, rgba(214, 173, 66, 0.12), transparent 34rem);
+}
+
+.facility-cta > .page-frame {
+  position: relative;
+  z-index: 2;
 }
 
 .facility-cta h2 {

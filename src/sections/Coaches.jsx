@@ -27,7 +27,7 @@ const coaches = [
     bio: "Focuses on mobility, athletic recovery, and core stability. Alison's classes help students reduce tightness, restore movement quality, and build the functional flexibility needed for consistent high-impact training.",
   },
   {
-    name: "Hadassah Lehman",
+    name: "Hadassah Leaman",
     role: "Women's Coach",
     image: "/images/coach5.jpg",
     bio: "Creates an empowering, supportive, and technical environment for women in martial arts. Hadassah emphasizes leverage-based self-defense, focused drilling, and building lasting confidence through skill development.",
