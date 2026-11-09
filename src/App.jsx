@@ -9,6 +9,7 @@ import Faq from "./sections/Faq.jsx";
 import Inquiry from "./sections/Inquiry.jsx";
 import Footer from "./sections/Footer.jsx";
 import FacilitiesPage from "./pages/FacilitiesPage.jsx";
+import BlackFridayModal from "./components/BlackFridayModal.jsx";
 
 const HomePage = () => (
   <main className="site-shell">
@@ -25,9 +26,13 @@ const HomePage = () => (
   </main>
 );
 
-const App = () =>
-  window.location.pathname.replace(/\/+$/, "") === "/facilities"
-    ? <FacilitiesPage />
-    : <HomePage />;
+const App = () => (
+  <>
+    {window.location.pathname.replace(/\/+$/, "") === "/facilities"
+      ? <FacilitiesPage />
+      : <HomePage />}
+    <BlackFridayModal />
+  </>
+);
 
 export default App;
