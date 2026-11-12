@@ -61,7 +61,7 @@ const BlackFridayModal = () => {
         <p className="black-friday-modal__deadline">Offer ends November 30.</p>
         <a
           className="button button--gold black-friday-modal__claim"
-          href="https://lewisburg-bjj.gymdesk.com/signup"
+          href="https://lewisburg-bjj.gymdesk.com/signup/v/lBkqa"
         >
           Claim Your Membership <span aria-hidden="true">↗</span>
         </a>
